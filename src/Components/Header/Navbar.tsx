@@ -1,6 +1,6 @@
 import { Menu, Plus } from "lucide-react";
 
-import Logo from "../../assets/logo.svg";
+import Logo from "../../assets/divinoLogo.svg";
 
 import Container from "../UI/Container";
 export default function Navbar() {
