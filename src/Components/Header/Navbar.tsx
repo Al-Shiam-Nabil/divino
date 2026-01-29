@@ -82,7 +82,7 @@ const Header: React.FC = () => {
               </a>
 
               {/* NAVIGATION */}
-              <nav className="hidden md:flex items-center gap-10">
+              <nav className="hidden lg:flex items-center gap-10">
                 <a href="" className="relative group py-2">
                   <span className=" font-medium text-slate-800 transition-colors group-hover:text-slate-900">
                     Home
@@ -263,7 +263,7 @@ const Header: React.FC = () => {
               </nav>
 
               {/* CALL TO ACTION */}
-              <div className="hidden md:block">
+              <div className="hidden lg:block">
                 <button className="group relative px-8 py-4 bg-slate-900 text-white rounded-full font-semibold  tracking-[0.1em] overflow-hidden transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95">
                   <span className="relative z-10 flex items-center gap-3">
                     Start Project
@@ -290,7 +290,7 @@ const Header: React.FC = () => {
 
       {/* MOBILE OVERLAY - Eased Entry */}
       <div
-        className={`fixed inset-0 z-[110] bg-white transition-all duration-[0.8s] cubic-bezier(0.16, 1, 0.3, 1) md:hidden ${
+        className={`fixed inset-0 z-[110] bg-white transition-all duration-[0.8s] cubic-bezier(0.16, 1, 0.3, 1) lg:hidden ${
           isOpen ? "translate-y-0" : "-translate-y-full"
         }`}
       >
