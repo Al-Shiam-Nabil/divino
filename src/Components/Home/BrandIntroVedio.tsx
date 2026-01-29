@@ -28,7 +28,7 @@ const BrandIntroVedio: React.FC = () => {
     "https://wavespaceagency.s3.us-east-2.amazonaws.com/Wavespace+-+UI%3AUX+design+for+future+unicorns+.mp4";
 
   return (
-    <section className="relative  pb-24 w-full   mx-auto overflow-hidden">
+    <section className="relative   w-full   mx-auto overflow-hidden">
       <div
         className="relative group cursor-pointer "
         onClick={() => setIsModalOpen(true)}
