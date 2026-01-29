@@ -68,9 +68,9 @@ const Header: React.FC = () => {
         className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-[1.2s] cubic-bezier(0.16, 1, 0.3, 1) ${scrolled ? "pt-4" : "pt-8"}`}
       >
         <Container>
-          <div className="w-full mx-auto px-6">
+          <div className="w-full mx-auto  border">
             <div
-              className={`flex items-center justify-between px-8 py-3 transition-all duration-500 rounded-full ${
+              className={`flex items-center justify-between px-8 py-2 transition-all duration-500 rounded-full ${
                 scrolled
                   ? "bg-white/50 backdrop-blur-xl shadow-[0_20px_50px_-15px_rgba(0,0,0,0.08)] "
                   : "bg-transparent"
