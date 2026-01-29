@@ -22,16 +22,16 @@ export default function Navbar() {
             <ul className="flex items-center gap-8 ">
               <li className="cursor-pointer">Home</li>
               <li className="cursor-pointer">Services</li>
+              <li className="cursor-pointer">Careers</li>
               <li className="cursor-pointer">Pricing</li>
               <li className="cursor-pointer">About Us</li>
               <li className="cursor-pointer">Contact Us</li>
-              <li className="cursor-pointer">Blog</li>
             </ul>
           </div>
 
           {/* button */}
 
-          <button className=" hidden  border-b-2 border-black bg pb-3 lg:flex items-center gap-2 cursor-pointer hover:bg-black hover:text-white  px-3 pt-3">
+          <button className=" hidden font-semibold  border-b-2 border-black bg pb-3 lg:flex items-center gap-2 cursor-pointer hover:bg-black hover:text-white  px-4 pt-3">
             <Plus /> Get Started
           </button>
 
