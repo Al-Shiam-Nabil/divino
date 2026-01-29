@@ -135,7 +135,7 @@ const Header: React.FC = () => {
                               <button
                                 key={item.title}
                                 onMouseEnter={() => setActiveTab(index)}
-                                className={`w-full h-[72px] text-left px-5 rounded-2xl transition-all duration-300 flex items-center gap-5 group/item relative z-10 ${
+                                className={`w-full h-[72px] text-left px-5 rounded-xl transition-all duration-300 flex items-center gap-5 group/item relative z-10 cursor-pointer ${
                                   activeTab === index
                                     ? "opacity-100"
                                     : "opacity-90 hover:opacity-100"
@@ -150,7 +150,7 @@ const Header: React.FC = () => {
                                 >
                                   <item.icon size={18} strokeWidth={2.5} />
                                 </div>
-                                <div className="flex flex-col justify-center">
+                                <div className="flex flex-col justify-center ">
                                   <span
                                     className={`block text-[13px] font-black uppercase tracking-wider transition-colors duration-300 ${
                                       activeTab === index
