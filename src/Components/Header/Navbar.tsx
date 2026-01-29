@@ -1,6 +1,7 @@
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Logo from "../../assets/divinoLogo.svg";
+import Container from "../UI/Container";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,60 +31,62 @@ const Navbar: React.FC = () => {
           scrolled ? "py-4 px-4 sm:px-8" : "py-8 px-6 sm:px-12"
         }`}
       >
-        <div
-          className={`max-w-[95rem] mx-auto transition-all duration-500 ${
-            scrolled
-              ? "bg-white/50 backdrop-blur-xl rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.04)]  px-8 py-3"
-              : "bg-transparent px-0"
-          }`}
-        >
-          <nav className="flex justify-between items-center">
-            {/* 1. LEFT: BRAND IDENTITY */}
-            <div className="flex-1 flex items-center">
-              <a href="#" className="w-30  flex items-center gap-2.5 group">
-                <img
-                  src={Logo}
-                  alt="logo"
-                  className="w-full h-full object-contain"
-                />
-              </a>
-            </div>
-
-            {/* 2. CENTER: MAIN NAVIGATION */}
-            <div className="hidden lg:flex items-center justify-center gap-10">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="relative group py-2"
-                >
-                  <span className=" font-medium text-slate-800 transition-colors group-hover:text-slate-900">
-                    {link.name}
-                  </span>
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100"></span>
+        <Container>
+          <div
+            className={`max-w-[95rem] mx-auto transition-all duration-500 ${
+              scrolled
+                ? "bg-white/50 backdrop-blur-xl rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.04)]  px-8 py-3"
+                : "bg-transparent px-0"
+            }`}
+          >
+            <nav className="flex justify-between items-center">
+              {/* 1. LEFT: BRAND IDENTITY */}
+              <div className="flex-1 flex items-center">
+                <a href="#" className="w-30  flex items-center gap-2.5 group">
+                  <img
+                    src={Logo}
+                    alt="logo"
+                    className="w-full h-full object-contain"
+                  />
                 </a>
-              ))}
-            </div>
-
-            {/* 3. RIGHT: CALL TO ACTION */}
-            <div className="flex-1 flex items-center justify-end">
-              <div className="hidden sm:block">
-                <button className="px-7 py-3.5 bg-slate-900 text-white rounded-full font-bold text-base transition-all hover:bg-indigo-600 hover:shadow-xl hover:shadow-indigo-500/20 active:scale-95 flex items-center gap-2">
-                  Start a Project
-                  <ArrowUpRight size={16} />
-                </button>
               </div>
 
-              {/* Mobile Menu Toggle */}
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 text-slate-900 hover:bg-slate-200 transition-colors"
-              >
-                {isOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
-            </div>
-          </nav>
-        </div>
+              {/* 2. CENTER: MAIN NAVIGATION */}
+              <div className="hidden lg:flex items-center justify-center gap-10">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="relative group py-2"
+                  >
+                    <span className=" font-medium text-slate-800 transition-colors group-hover:text-slate-900">
+                      {link.name}
+                    </span>
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100"></span>
+                  </a>
+                ))}
+              </div>
+
+              {/* 3. RIGHT: CALL TO ACTION */}
+              <div className="flex-1 flex items-center justify-end">
+                <div className="hidden sm:block">
+                  <button className="px-7 py-3.5 bg-slate-900 text-white rounded-full font-bold text-base transition-all hover:bg-indigo-600 hover:shadow-xl hover:shadow-indigo-500/20 active:scale-95 flex items-center gap-2">
+                    Start a Project
+                    <ArrowUpRight size={16} />
+                  </button>
+                </div>
+
+                {/* Mobile Menu Toggle */}
+                <button
+                  onClick={() => setIsOpen(!isOpen)}
+                  className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-slate-100 text-slate-900 hover:bg-slate-200 transition-colors"
+                >
+                  {isOpen ? <X size={20} /> : <Menu size={20} />}
+                </button>
+              </div>
+            </nav>
+          </div>
+        </Container>
       </div>
 
       {/* MOBILE MENU */}
