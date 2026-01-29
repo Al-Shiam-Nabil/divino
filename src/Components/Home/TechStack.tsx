@@ -50,7 +50,7 @@ const TechStack: React.FC = () => {
   const duplicatedTools = [...tools, ...tools, ...tools];
 
   return (
-    <section className="w-full py-24 relative overflow-hidden group border-y border-slate-100 bg-white/30 backdrop-blur-sm">
+    <section className="w-full py-24 relative overflow-hidden group ">
       {/* 
         Faded Edges Logic: 
         Using high-z-index absolute divs with gradients that match the app's 
