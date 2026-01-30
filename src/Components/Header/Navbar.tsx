@@ -22,7 +22,7 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -131,7 +131,7 @@ const Header: React.FC = () => {
         <Container>
           <div className="w-full mx-auto ">
             <div
-              className={`flex items-center justify-between px-8 py-2 transition-all duration-500 rounded-full ${
+              className={`flex items-center justify-between ${scrolled ? "px-4" : "px-0"} md:px-8 py-3 md:py-2 transition-all duration-500 rounded-full ${
                 scrolled
                   ? "bg-white/50 backdrop-blur-xl shadow-[0_20px_50px_-15px_rgba(0,0,0,0.08)] "
                   : "bg-transparent"
@@ -139,7 +139,11 @@ const Header: React.FC = () => {
             >
               {/* BRAND */}
               <a href="#" className="flex items-center gap-3 group">
-                <img src={Logo} alt="" className="w-30 object-contain" />
+                <img
+                  src={Logo}
+                  alt=""
+                  className="md:w-30 w-28 object-contain"
+                />
               </a>
 
               {/* NAVIGATION */}
@@ -340,7 +344,7 @@ const Header: React.FC = () => {
               {/* MOBILE TRIGGER */}
               <button
                 onClick={() => setIsOpen(true)}
-                className="xl:hidden p-2 text-slate-900"
+                className="xl:hidden md:p-2 text-slate-900"
               >
                 <Menu size={24} />
               </button>
@@ -447,7 +451,7 @@ const Header: React.FC = () => {
                           : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="space-y-1 pl-6 border-l-2 border-blue-400 ml-4">
+                      <div className="space-y-1 pl-6 border-l-2 border-blue-300 ml-4">
                         {link.dropdown.map((subLink, ind) => (
                           <div
                             key={ind}
