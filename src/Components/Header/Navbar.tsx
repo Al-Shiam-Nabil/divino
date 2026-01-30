@@ -608,17 +608,23 @@ const Header: React.FC = () => {
 
       {/* MOBILE OVERLAY - Optimized for Mobile UX */}
       <div
-        className={`fixed inset-y-0 left-0 z-[110] w-full sm:w-[400px] bg-white transition-transform duration-[0.5s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
-          isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
+        className={`fixed inset-y-0 left-0 z-[110] w-full sm:w-[400px] bg-white transition-transform  cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
+          isOpen
+            ? "translate-x-0 shadow-2xl duration-[0.5s]"
+            : "-translate-x-full duration-[0.5s]"
         }`}
         style={{ height: "100%", minHeight: "-webkit-fill-available" }}
       >
-        {/* [@media(min-height:500px)]:flex-col ensure korbe boro screen e flex thakbe, 
+        {/* [@media(min-height:500px)]:flex-col ensure korbe boro screen e flex thakbe,
+
             chhoto screen e flex layout kaaj korbe na jate scroll smoothly kaaj kore */}
+
         <div className="h-full flex flex-col [@media(max-height:500px)]:block overflow-y-auto overflow-x-hidden no-scrollbar relative">
           {/* 1. Header Section */}
+
           <div className="p-5 flex justify-between items-center border-b border-slate-50 shrink-0 bg-white sticky top-0 z-20">
             <img src={Logo} alt="Logo" className="w-24 object-contain" />
+
             <button
               onClick={() => setIsOpen(false)}
               className="w-10 h-10 flex items-center justify-center bg-slate-50 text-slate-900 rounded-full active:scale-90 transition-all border border-slate-100"
@@ -628,6 +634,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* 2. Navigation Area */}
+
           <div className="[@media(min-height:500px)]:flex-1 px-5 py-6">
             <div className="flex flex-col gap-2">
               {navLinks.map((link, index) => (
@@ -636,7 +643,8 @@ const Header: React.FC = () => {
                     onClick={() =>
                       setOpenDropdown((prev) => (prev === index ? null : index))
                     }
-                    className={`flex items-center justify-between py-3.5 px-4 rounded-xl cursor-pointer transition-all duration-400 
+                    className={`flex items-center justify-between py-3.5 px-4 rounded-xl cursor-pointer transition-all duration-400
+
                     ${
                       openDropdown === index
                         ? "bg-slate-900 text-white shadow-lg"
@@ -646,6 +654,7 @@ const Header: React.FC = () => {
                     <span className="text-lg font-bold tracking-tight capitalize">
                       {link.title}
                     </span>
+
                     {link.dropdown && (
                       <div
                         className={`transition-transform duration-500 ${openDropdown === index ? "rotate-180" : ""}`}
@@ -664,7 +673,7 @@ const Header: React.FC = () => {
 
                   {link.dropdown && (
                     <div
-                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                      className={`overflow-hidden transition-all duration-700 ease-in-out ${
                         openDropdown === index
                           ? "max-h-[1000px] opacity-100 mt-2 mb-2"
                           : "max-h-0 opacity-0"
@@ -679,10 +688,12 @@ const Header: React.FC = () => {
                             <div className="w-9 h-9 rounded-lg bg-slate-50 flex items-center justify-center text-indigo-600 shrink-0">
                               <sub.icon size={16} />
                             </div>
+
                             <div className="flex-1 min-w-0">
                               <h4 className="text-[14px] font-bold text-slate-900 leading-tight">
                                 {sub.title}
                               </h4>
+
                               <p className="hidden [@media(min-height:600px)]:block text-[11px] text-slate-400 font-medium mt-1 line-clamp-1">
                                 {sub.desc}
                               </p>
@@ -698,8 +709,11 @@ const Header: React.FC = () => {
           </div>
 
           {/* 3. Footer Area - Conditional Positioning */}
-          {/* [@media(min-height:500px)]:shrink-0 ensure korbe boro screen e footer fixed/shrink thakbe, 
+
+          {/* [@media(min-height:500px)]:shrink-0 ensure korbe boro screen e footer fixed/shrink thakbe,
+
               chhoto screen e eta nav-link er por ashbe */}
+
           <div className="p-6 bg-slate-50 border-t border-slate-100 [@media(min-height:500px)]:shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
             <div className="flex flex-col gap-4">
               <div className="flex justify-between items-center px-1">
@@ -707,12 +721,15 @@ const Header: React.FC = () => {
                   <span className="text-[9px] font-black uppercase tracking-widest text-indigo-600 leading-none">
                     Collaboration
                   </span>
+
                   <p className="text-sm font-bold text-slate-900">
                     contact@divino.agency
                   </p>
                 </div>
+
                 <div className="hidden min-[400px]:flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-slate-200">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+
                   <span className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">
                     Available
                   </span>
