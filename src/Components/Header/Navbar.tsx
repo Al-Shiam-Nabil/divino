@@ -340,7 +340,7 @@ const Header: React.FC = () => {
 
               <button onClick={() => setIsOpen(true)} className="xl:hidden ">
                 {/* Modern Icon Container */}
-                <div className="relative p-2 bg-slate-900 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg]">
+                <div className="relative p-2 bg-linear-45 to-[#0B2B4C] from-[#0A111B] rounded-full flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg]">
                   <Menu size={24} strokeWidth={2} className="text-white" />
                 </div>
               </button>
@@ -722,7 +722,7 @@ const Header: React.FC = () => {
 
           <div className="p-6  border-t border-slate-100 [@media(min-height:500px)]:shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
             <div className="flex flex-col gap-4">
-              <button className="w-full flex items-center justify-between py-2 pl-6 pr-2 bg-slate-950 text-white rounded-full font-bold text-[22px] capitalize  active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
+              <button className="w-full flex items-center justify-between py-2 pl-6 pr-2 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full font-bold text-[22px] capitalize  active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
                 Contact Us
                 <div className="p-2 rounded-full bg-white/90 flex items-center justify-center">
                   <ArrowUpRight size={28} className="text-slate-950" />
