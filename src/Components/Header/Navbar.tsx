@@ -685,18 +685,18 @@ const Header: React.FC = () => {
                             key={i}
                             className="p-3 rounded-xl border border-slate-50 active:bg-indigo-50 transition-all flex items-center gap-3"
                           >
-                            <div className="w-9 h-9 rounded-lg bg-slate-50 flex items-center justify-center text-indigo-600 shrink-0">
+                            {/* <div className="w-9 h-9 rounded-lg bg-slate-50 flex items-center justify-center text-indigo-600 shrink-0">
                               <sub.icon size={16} />
-                            </div>
+                            </div> */}
 
                             <div className="flex-1 min-w-0">
-                              <h4 className="text-[14px] font-bold text-slate-900 leading-tight">
+                              <h4 className="text-[15px] font-bold text-slate-900 leading-tight">
                                 {sub.title}
                               </h4>
 
-                              <p className="hidden [@media(min-height:600px)]:block text-[11px] text-slate-400 font-medium mt-1 line-clamp-1">
+                              {/* <p className="hidden [@media(min-height:600px)]:block text-[11px] text-slate-400 font-medium mt-1 line-clamp-1">
                                 {sub.desc}
-                              </p>
+                              </p> */}
                             </div>
                           </div>
                         ))}
@@ -714,28 +714,8 @@ const Header: React.FC = () => {
 
               chhoto screen e eta nav-link er por ashbe */}
 
-          <div className="p-6 bg-slate-50 border-t border-slate-100 [@media(min-height:500px)]:shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
+          <div className="p-6  border-t border-slate-100 [@media(min-height:500px)]:shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
             <div className="flex flex-col gap-4">
-              <div className="flex justify-between items-center px-1">
-                <div className="space-y-0.5">
-                  <span className="text-[9px] font-black uppercase tracking-widest text-indigo-600 leading-none">
-                    Collaboration
-                  </span>
-
-                  <p className="text-sm font-bold text-slate-900">
-                    contact@divino.agency
-                  </p>
-                </div>
-
-                <div className="hidden min-[400px]:flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-slate-200">
-                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-
-                  <span className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">
-                    Available
-                  </span>
-                </div>
-              </div>
-
               <button className="w-full flex items-center justify-between py-3 px-6 bg-slate-950 text-white rounded-full font-bold uppercase text-sm tracking-[0.1em] active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
                 Start a Project
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
