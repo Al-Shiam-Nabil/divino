@@ -340,7 +340,7 @@ const Header: React.FC = () => {
 
               <button onClick={() => setIsOpen(true)} className="xl:hidden ">
                 {/* Modern Icon Container */}
-                <div className="relative p-2 bg-slate-900 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg]">
+                <div className="relative p-2 bg-slate-900 rounded-full flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg]">
                   <Menu size={24} strokeWidth={2} className="text-white" />
                 </div>
               </button>
