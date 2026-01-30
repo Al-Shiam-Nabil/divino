@@ -318,7 +318,7 @@ const Header: React.FC = () => {
 
               {/* CALL TO ACTION */}
               <div className="hidden xl:block">
-                <button className="group relative px-8 py-4 bg-slate-900 text-white rounded-full font-semibold  tracking-[0.1em] overflow-hidden transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95">
+                <button className="group relative px-8 py-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full text-base font-semibold  tracking-[0.1em] overflow-hidden transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95">
                   <span className="relative z-10 flex items-center gap-2">
                     Contact Us
                     <ArrowUpRight
@@ -722,7 +722,7 @@ const Header: React.FC = () => {
 
           <div className="p-6  border-t border-slate-100 [@media(min-height:500px)]:shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
             <div className="flex flex-col gap-4">
-              <button className="w-full flex items-center justify-between py-2 pl-6 pr-2 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full font-bold text-[22px] capitalize  active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
+              <button className="w-full h-[72px] flex items-center justify-between py-2 pl-6 pr-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full font-bold text-[22px] capitalize  active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
                 Contact Us
                 <div className="p-2 rounded-full bg-white/90 flex items-center justify-center">
                   <ArrowUpRight size={28} className="text-slate-950" />
