@@ -620,14 +620,14 @@ const Header: React.FC = () => {
         <div className="h-full flex flex-col [@media(max-height:500px)]:block overflow-y-auto overflow-x-hidden no-scrollbar relative">
           {/* 1. Header Section */}
 
-          <div className="p-5 flex justify-between items-center border-b border-slate-50 shrink-0 bg-white sticky top-0 z-20">
-            <img src={Logo} alt="Logo" className="w-24 object-contain" />
+          <div className="p-8 flex justify-between items-center border-b border-slate-50 shrink-0 bg-white sticky top-0 z-20">
+            <img src={Logo} alt="Logo" className="w-40  object-contain" />
 
             <button
               onClick={() => setIsOpen(false)}
               className="w-10 h-10 flex items-center justify-center bg-slate-50 text-slate-900 rounded-full active:scale-90 transition-all border border-slate-100"
             >
-              <X size={20} />
+              <X size={24} />
             </button>
           </div>
 
@@ -651,7 +651,7 @@ const Header: React.FC = () => {
                         : "bg-transparent text-slate-700 active:bg-slate-50"
                     }`}
                   >
-                    <span className="text-xl font-bold tracking-tight capitalize">
+                    <span className="text-[28px] font-bold tracking-tight capitalize">
                       {link.title}
                     </span>
 
@@ -679,11 +679,11 @@ const Header: React.FC = () => {
                           : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="space-y-2 pl-2 mt-1 border-l-2 border-slate-100 ml-2">
+                      <div className=" px-5 mt-1  ml-2">
                         {link.dropdown.map((sub, i) => (
                           <div
                             key={i}
-                            className="p-3 rounded-xl border border-slate-50 active:bg-indigo-50 transition-all flex items-center gap-3"
+                            className="p-4 border-b border-slate-200  transition-all flex items-center gap-3"
                           >
                             {/* <div className="w-9 h-9 rounded-lg bg-slate-50 flex items-center justify-center text-indigo-600 shrink-0">
 
@@ -692,7 +692,7 @@ const Header: React.FC = () => {
                             </div> */}
 
                             <div className="flex-1 min-w-0">
-                              <h4 className="text-lg  font-bold text-slate-900 leading-tight">
+                              <h4 className="text-2xl  font-bold text-slate-900 leading-tight">
                                 {sub.title}
                               </h4>
 
@@ -722,7 +722,7 @@ const Header: React.FC = () => {
 
           <div className="p-6  border-t border-slate-100 [@media(min-height:500px)]:shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
             <div className="flex flex-col gap-4">
-              <button className="w-full flex items-center justify-between py-2 pl-6 pr-2 bg-slate-950 text-white rounded-full font-bold text-base uppercase text-lg tracking-[0.1em] active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
+              <button className="w-full flex items-center justify-between py-2 pl-6 pr-2 bg-slate-950 text-white rounded-full font-bold text-[22px] capitalize  active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
                 Contact Us
                 <div className="p-2 rounded-full bg-white/90 flex items-center justify-center">
                   <ArrowUpRight size={28} className="text-slate-950" />
