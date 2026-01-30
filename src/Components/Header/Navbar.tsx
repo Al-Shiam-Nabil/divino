@@ -647,7 +647,7 @@ const Header: React.FC = () => {
 
                     ${
                       openDropdown === index
-                        ? "bg-slate-900 text-white shadow-lg"
+                        ? "bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white shadow-lg"
                         : "bg-transparent text-slate-700 active:bg-slate-50"
                     }`}
                   >
