@@ -479,7 +479,7 @@ const Header: React.FC = () => {
       </div> */}
 
       {/* MOBILE OVERLAY - Sophisticated IT Agency UI */}
-      <div
+      {/* <div
         className={`fixed inset-0 z-[110] sm:w-[420px] bg-white transition-all duration-[0.8s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
           isOpen
             ? "translate-x-0 shadow-[0_0_60px_rgba(0,0,0,0.1)]"
@@ -487,7 +487,7 @@ const Header: React.FC = () => {
         }`}
       >
         <div className="h-full flex flex-col relative">
-          {/* 1. Header Section */}
+      
           <div className="p-8 flex justify-between items-center border-b border-slate-50">
             <img src={Logo} alt="Logo" className="w-28 object-contain" />
             <button
@@ -498,7 +498,7 @@ const Header: React.FC = () => {
             </button>
           </div>
 
-          {/* 2. Navigation Area */}
+        
           <div className="flex-1 overflow-y-auto px-6 py-8 no-scrollbar">
             <div className="space-y-4">
               {navLinks.map((link, index) => (
@@ -533,7 +533,7 @@ const Header: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Dropdown with Modern Card Feel */}
+               
                   {link.dropdown && (
                     <div
                       className={`overflow-hidden transition-all duration-700 ease-in-out ${
@@ -573,7 +573,7 @@ const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* 3. Refined Footer Area */}
+       
           <div className="p-8 bg-slate-50/50 border-t border-slate-100 mt-auto">
             <div className="flex flex-col gap-6">
               <div className="space-y-1">
@@ -601,6 +601,131 @@ const Header: React.FC = () => {
                   <div className="w-1.5 h-1.5 rounded-full bg-slate-400" />
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div> */}
+
+      {/* MOBILE OVERLAY - Optimized for Mobile UX */}
+      <div
+        className={`fixed inset-0 z-[110] w-full sm:w-[400px] bg-white transition-all duration-[0.7s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
+          isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
+        }`}
+      >
+        <div className="h-full flex flex-col overflow-hidden">
+          {/* 1. Header Section - Height kom phn e padding kome jabe */}
+          <div className="p-5 min-[500px]:p-6 flex justify-between items-center border-b border-slate-50 shrink-0">
+            <img
+              src={Logo}
+              alt="Logo"
+              className="w-20 min-[500px]:w-24 object-contain"
+            />
+            <button
+              onClick={() => setIsOpen(false)}
+              className="w-9 h-9 flex items-center justify-center bg-slate-50 text-slate-900 rounded-full active:scale-90 transition-all"
+            >
+              <X size={18} />
+            </button>
+          </div>
+
+          {/* 2. Navigation Area - Scrollable & Compact for small height */}
+          <div className="flex-1 overflow-y-auto px-4 min-[500px]:px-5 py-2 no-scrollbar bg-white">
+            {/* Gap automatic kombe height kom phn e */}
+            <div className="flex flex-col gap-1 min-[500px]:gap-2 py-2">
+              {navLinks.map((link, index) => (
+                <div key={index} className="w-full">
+                  <div
+                    onClick={() =>
+                      setOpenDropdown((prev) => (prev === index ? null : index))
+                    }
+                    className={`flex items-center justify-between py-2.5 px-4 min-[500px]:py-3 rounded-lg cursor-pointer transition-all duration-400 
+                ${
+                  openDropdown === index
+                    ? "bg-slate-900 text-white shadow-md"
+                    : "bg-transparent text-slate-700 active:bg-slate-50"
+                }`}
+                  >
+                    <span className="text-sm min-[500px]:text-base font-bold tracking-tight capitalize">
+                      {link.title}
+                    </span>
+                    {link.dropdown && (
+                      <div
+                        className={`transition-transform duration-500 ${openDropdown === index ? "rotate-180" : ""}`}
+                      >
+                        <ChevronDown
+                          size={16}
+                          className={
+                            openDropdown === index
+                              ? "text-white"
+                              : "text-slate-400"
+                          }
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Dropdown - Max-height managed for short screens */}
+                  {link.dropdown && (
+                    <div
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        openDropdown === index
+                          ? "max-h-[500px] opacity-100 mt-1 mb-1"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <div className="space-y-1.5 pl-2 mt-1">
+                        {link.dropdown.map((sub, i) => (
+                          <div
+                            key={i}
+                            className="p-2.5 rounded-xl border border-slate-50 active:bg-indigo-50 transition-all flex items-center gap-3"
+                          >
+                            <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-indigo-600 shrink-0">
+                              <sub.icon size={14} />
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-[12px] font-bold text-slate-900 leading-none">
+                                {sub.title}
+                              </h4>
+                              {/* Short screen e description hide kora hoyeche clutter komate */}
+                              <p className="hidden min-[600px]:block text-[10px] text-slate-400 font-medium mt-1 line-clamp-1">
+                                {sub.desc}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 3. Refined Footer - Slimmer for Short Screens */}
+          <div className="p-4 min-[500px]:p-6 bg-slate-50 border-t border-slate-100 shrink-0">
+            <div className="flex flex-col gap-3 min-[500px]:gap-4">
+              {/* Height kom phn e email bar-ti simplify kora hoyeche */}
+              <div className="flex justify-between items-center px-1">
+                <div className="space-y-0">
+                  <span className="text-[8px] min-[500px]:text-[9px] font-black uppercase tracking-wider text-indigo-600 leading-none">
+                    Enquiry
+                  </span>
+                  <p className="text-xs min-[500px]:text-sm font-bold text-slate-900">
+                    contact@divino.agency
+                  </p>
+                </div>
+                <div className="hidden min-[400px]:flex items-center gap-1.5 bg-green-100 px-2 py-0.5 min-[500px]:py-1 rounded-full">
+                  <div className="w-1 h-1 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-[8px] font-bold text-green-700 uppercase">
+                    Online
+                  </span>
+                </div>
+              </div>
+
+              <button className="w-full flex items-center justify-between p-3.5 min-[500px]:p-4 bg-slate-900 text-white rounded-full font-bold uppercase text-[10px] min-[500px]:text-[11px] tracking-widest active:scale-[0.98] transition-all shadow-lg">
+                Start a Project
+                <ArrowUpRight size={14} className="text-white/50" />
+              </button>
             </div>
           </div>
         </div>
