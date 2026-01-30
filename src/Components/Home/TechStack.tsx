@@ -50,14 +50,8 @@ const TechStack: React.FC = () => {
   const duplicatedTools = [...tools, ...tools, ...tools];
 
   return (
-    <section className="w-full py-24 relative overflow-hidden group ">
-      {/* 
-        Faded Edges Logic: 
-        Using high-z-index absolute divs with gradients that match the app's 
-        overall soft background feel while remaining functional.
-      */}
-
-      <div className="flex select-none">
+    <section className="w-full py-24 relative overflow-hidden group select-none">
+      <div className="flex">
         {/* 
           Marquee Container:
           - 'animate-marquee' handles the infinite linear movement.
