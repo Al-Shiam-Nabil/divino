@@ -18,6 +18,7 @@ const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +27,66 @@ const Header: React.FC = () => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const navLinks = [
+    {
+      title: "Home",
+      path: "",
+    },
+    {
+      title: "Pricing",
+      path: "",
+    },
+    {
+      title: "Services",
+      dropdown: [
+        {
+          title: "Web Engineering",
+          desc: "High-performance React & TS ecosystems.",
+          icon: Code2,
+          image:
+            "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
+          tag: "Performance",
+        },
+        {
+          title: "Brand Identity",
+          desc: "Defining visual narratives for modern labels.",
+          icon: Palette,
+          image:
+            "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
+          tag: "Creative",
+        },
+        {
+          title: "UX Architecture",
+          desc: "Data-backed human interaction design.",
+          icon: Layers,
+          image:
+            "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800",
+          tag: "Strategic",
+        },
+        {
+          title: "Scale & Support",
+          desc: "Long-term infrastructure and IT strategy.",
+          icon: ShieldCheck,
+          image:
+            "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
+          tag: "Reliable",
+        },
+      ],
+    },
+    {
+      title: "Careers",
+      path: "",
+    },
+    {
+      title: "About Us",
+      path: "",
+    },
+    {
+      title: "Contact Us",
+      path: "",
+    },
+  ];
 
   const serviceItems = [
     {
@@ -263,7 +324,7 @@ const Header: React.FC = () => {
               </nav>
 
               {/* CALL TO ACTION */}
-              <div className="hidden lg:block">
+              <div className="hidden xl:block">
                 <button className="group relative px-8 py-4 bg-slate-900 text-white rounded-full font-semibold  tracking-[0.1em] overflow-hidden transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95">
                   <span className="relative z-10 flex items-center gap-3">
                     Start Project
@@ -279,7 +340,7 @@ const Header: React.FC = () => {
               {/* MOBILE TRIGGER */}
               <button
                 onClick={() => setIsOpen(true)}
-                className="md:hidden p-2 text-slate-900"
+                className="xl:hidden p-2 text-slate-900"
               >
                 <Menu size={24} />
               </button>
@@ -289,16 +350,14 @@ const Header: React.FC = () => {
       </div>
 
       {/* MOBILE OVERLAY - Eased Entry */}
-      <div
-        className={`fixed inset-0 z-[110] bg-white transition-all duration-[0.8s] cubic-bezier(0.16, 1, 0.3, 1) lg:hidden ${
-          isOpen ? "translate-y-0" : "-translate-y-full"
+      {/* <div
+        className={`fixed inset-0 z-[110] sm:w-[400px] bg-white transition-all duration-[0.8s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="h-full flex flex-col p-10">
           <div className="flex justify-between items-center mb-16">
-            <span className="text-2xl font-[900] uppercase tracking-tighter">
-              Divino.
-            </span>
+            <img src={Logo} alt="Logo" className="w-30 object-contain" />
             <button
               onClick={() => setIsOpen(false)}
               className="p-5 bg-slate-50 rounded-2xl transition-transform active:scale-90"
@@ -307,17 +366,120 @@ const Header: React.FC = () => {
             </button>
           </div>
           <div className="space-y-8">
-            <a
-              href="#"
-              className="block text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none"
-            >
-              Work
-            </a>
             <div className="py-6 space-y-6">
-              <span className="block text-[10px] font-black uppercase tracking-[0.4em] text-slate-300">
-                Expertise
-              </span>
-              {serviceItems.map((item, i) => (
+              {navLinks.map((link, index) => (
+                <div key={index}>
+                  <div
+                    onClick={() => setOpenDropdown((prev) => !prev)}
+                    className="flex items-center justify-between"
+                  >
+                    <span className="">{link.title}</span>
+                    {link.dropdown && (
+                      <span>
+                        <ChevronDown />
+                      </span>
+                    )}
+                  </div>
+                  {link.dropdown && openDropdown && (
+                    <div className="mt-4 space-y-3 pl-5">
+                      {link.dropdown.map((subLink, ind) => (
+                        <div key={ind}>{subLink.title}</div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="mt-auto">
+            <button className="w-full py-5 bg-slate-900 text-white text-lg font-bold rounded-full uppercase tracking-[0.1em] shadow-2xl shadow-slate-900/20 active:scale-95 transition-transform">
+              Start a Project
+            </button>
+          </div>
+        </div>
+      </div> */}
+
+      <div
+        className={`fixed inset-0 z-[110] sm:w-[400px] bg-gradient-to-tr from-[#FDF6E1] to-[#E9F8FD] transition-all duration-[0.8s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
+          isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
+        }`}
+      >
+        <div className="h-full flex flex-col p-8 md:p-10">
+          {/* Header Section */}
+          <div className="flex justify-between items-center mb-12">
+            <img src={Logo} alt="Logo" className="w-28 object-contain" />
+            <button
+              onClick={() => setIsOpen(false)}
+              className="p-3 bg-slate-50 text-slate-600 hover:bg-red-50 hover:text-red-500 rounded-2xl transition-all duration-300 active:scale-90"
+            >
+              <X size={24} />
+            </button>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="flex-1 overflow-y-auto no-scrollbar">
+            <div className="space-y-2">
+              {navLinks.map((link, index) => (
+                <div key={index} className="group">
+                  <div
+                    onClick={() =>
+                      setOpenDropdown((prev) => (prev === index ? null : index))
+                    }
+                    className={`flex items-center justify-between p-4 rounded-2xl cursor-pointer transition-all duration-300 
+              ${openDropdown === index ? "bg-slate-50 text-slate-900" : "hover:bg-slate-50 text-slate-600 hover:text-slate-900"}`}
+                  >
+                    <span className="text-lg font-medium">{link.title}</span>
+                    {link.dropdown && (
+                      <span
+                        className={`transition-transform duration-300 ${openDropdown === index ? "rotate-180" : ""}`}
+                      >
+                        <ChevronDown size={20} />
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Dropdown with Smooth Animation */}
+                  {link.dropdown && (
+                    <div
+                      className={`overflow-hidden transition-all duration-500 ease-in-out ${
+                        openDropdown === index
+                          ? "max-h-[500px] opacity-100 mt-2"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <div className="space-y-1 pl-6 border-l-2 border-blue-400 ml-4">
+                        {link.dropdown.map((subLink, ind) => (
+                          <div
+                            key={ind}
+                            className="p-3 text-slate-500 hover:text-slate-900 hover:translate-x-2 transition-all duration-300 cursor-pointer text-[16px]"
+                          >
+                            {subLink.title}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer Button */}
+          <div className="pt-6">
+            <button className="w-full py-5 bg-slate-900 text-white text-md font-bold rounded-2xl uppercase tracking-[0.15em] shadow-xl hover:bg-slate-800 hover:shadow-slate-900/30 active:scale-[0.98] transition-all duration-300">
+              Start a Project
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Header;
+
+{
+  /* {serviceItems.map((item, i) => (
                 <a
                   key={item.title}
                   href="#"
@@ -329,33 +491,9 @@ const Header: React.FC = () => {
                   </div>
                   {item.title}
                 </a>
-              ))}
-            </div>
-            <a
-              href="#"
-              className="block text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none"
-            >
-              Studio
-            </a>
-            <a
-              href="#"
-              className="block text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none"
-            >
-              Contact
-            </a>
-          </div>
-          <div className="mt-auto">
-            <button className="w-full py-8 bg-slate-900 text-white text-xl font-black rounded-3xl uppercase tracking-[0.4em] shadow-2xl shadow-slate-900/20 active:scale-95 transition-transform">
-              Get in Touch
-            </button>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default Header;
+              ))} */
+}
+// -----------------------
 
 // import {
 //   ArrowUpRight,
