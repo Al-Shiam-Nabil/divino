@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   return (
     <div className="bg-gradient-to-tr from-[#FDF6E1] to-[#E9F8FD] ">
       <Container>
-        <section className="relative  py-20 pt-25   flex flex-col items-center justify-center h-screen">
+        <section className="relative  pt-40 pb-20 pt-25   flex flex-col items-center justify-center min-h-screen">
           <div className="max-w-4xl mx-auto text-center relative z-10 w-full">
             {/* Modern Label Badge */}
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white/40 backdrop-blur-sm border border-slate-900/10 text-slate-800 text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase mb-10 shadow-sm animate-in fade-in slide-in-from-bottom-4 duration-1000">

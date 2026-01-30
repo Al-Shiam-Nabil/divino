@@ -611,12 +611,13 @@ const Header: React.FC = () => {
         className={`fixed inset-y-0 left-0 z-[110] w-full sm:w-[400px] bg-white transition-transform duration-[0.5s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
           isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
         }`}
-        /* 'dvh' er bodole 'h-screen' ba fixed height bebohar kora hoyeche jate address bar asha-jawa korle sidebar resize na hoy */
         style={{ height: "100%", minHeight: "-webkit-fill-available" }}
       >
-        <div className="h-full flex flex-col overflow-hidden relative">
-          {/* 1. Header Section - Fixed at Top */}
-          <div className="p-5 flex justify-between items-center border-b border-slate-50 shrink-0 bg-white">
+        {/* [@media(min-height:500px)]:flex-col ensure korbe boro screen e flex thakbe, 
+            chhoto screen e flex layout kaaj korbe na jate scroll smoothly kaaj kore */}
+        <div className="h-full flex flex-col [@media(max-height:500px)]:block overflow-y-auto overflow-x-hidden no-scrollbar relative">
+          {/* 1. Header Section */}
+          <div className="p-5 flex justify-between items-center border-b border-slate-50 shrink-0 bg-white sticky top-0 z-20">
             <img src={Logo} alt="Logo" className="w-24 object-contain" />
             <button
               onClick={() => setIsOpen(false)}
@@ -626,9 +627,9 @@ const Header: React.FC = () => {
             </button>
           </div>
 
-          {/* 2. Navigation Area - Scrollable Section */}
-          <div className="flex-1 overflow-y-auto px-5 no-scrollbar">
-            <div className="flex flex-col gap-2 py-6">
+          {/* 2. Navigation Area */}
+          <div className="[@media(min-height:500px)]:flex-1 px-5 py-6">
+            <div className="flex flex-col gap-2">
               {navLinks.map((link, index) => (
                 <div key={index} className="w-full">
                   <div
@@ -661,7 +662,6 @@ const Header: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Dropdown Items */}
                   {link.dropdown && (
                     <div
                       className={`overflow-hidden transition-all duration-500 ease-in-out ${
@@ -683,7 +683,6 @@ const Header: React.FC = () => {
                               <h4 className="text-[14px] font-bold text-slate-900 leading-tight">
                                 {sub.title}
                               </h4>
-                              {/* Height kom hole auto scroll kaj korbe content-er bhitore */}
                               <p className="hidden [@media(min-height:600px)]:block text-[11px] text-slate-400 font-medium mt-1 line-clamp-1">
                                 {sub.desc}
                               </p>
@@ -698,8 +697,10 @@ const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* 3. Footer Area - Fixed at Bottom with Safe Area Inset */}
-          <div className="p-6 bg-slate-50 border-t border-slate-100 shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
+          {/* 3. Footer Area - Conditional Positioning */}
+          {/* [@media(min-height:500px)]:shrink-0 ensure korbe boro screen e footer fixed/shrink thakbe, 
+              chhoto screen e eta nav-link er por ashbe */}
+          <div className="p-6 bg-slate-50 border-t border-slate-100 [@media(min-height:500px)]:shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
             <div className="flex flex-col gap-4">
               <div className="flex justify-between items-center px-1">
                 <div className="space-y-0.5">
@@ -710,7 +711,6 @@ const Header: React.FC = () => {
                     contact@divino.agency
                   </p>
                 </div>
-                {/* Active Status */}
                 <div className="hidden min-[400px]:flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-slate-200">
                   <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
                   <span className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">
@@ -719,7 +719,7 @@ const Header: React.FC = () => {
                 </div>
               </div>
 
-              <button className="w-full flex items-center justify-between py-2 px-6 bg-slate-950 text-white rounded-full font-bold uppercase text-sm tracking-[0.1em] active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
+              <button className="w-full flex items-center justify-between py-3 px-6 bg-slate-950 text-white rounded-full font-bold uppercase text-sm tracking-[0.1em] active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
                 Start a Project
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                   <ArrowUpRight size={16} className="text-white" />
