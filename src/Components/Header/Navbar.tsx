@@ -611,6 +611,7 @@ const Header: React.FC = () => {
         className={`fixed inset-0 z-[110] w-full sm:w-[400px] bg-white transition-all duration-[0.7s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
           isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
         }`}
+        style={{ height: "100dvh" }}
       >
         <div className="h-full flex flex-col overflow-hidden">
           {/* 1. Header Section - Height kom phn e padding kome jabe */}
@@ -645,7 +646,7 @@ const Header: React.FC = () => {
                     : "bg-transparent text-slate-700 active:bg-slate-50"
                 }`}
                   >
-                    <span className="text-sm min-[500px]:text-base font-bold tracking-tight capitalize">
+                    <span className="text-lg min-[500px]:text-lg font-bold tracking-tight capitalize">
                       {link.title}
                     </span>
                     {link.dropdown && (
@@ -702,7 +703,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* 3. Refined Footer - Slimmer for Short Screens */}
-          <div className="p-4 min-[500px]:p-6 bg-slate-50 border-t border-slate-100 shrink-0">
+          <div className="p-4 pb-8 min-[500px]:p-6 bg-slate-50 border-t border-slate-100 shrink-0">
             <div className="flex flex-col gap-3 min-[500px]:gap-4">
               {/* Height kom phn e email bar-ti simplify kora hoyeche */}
               <div className="flex justify-between items-center px-1">
