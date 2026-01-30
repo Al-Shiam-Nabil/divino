@@ -30,7 +30,7 @@ const Header: React.FC = () => {
 
   const navLinks = [
     {
-      title: "Home",
+      title: "Case Studies",
       path: "",
     },
     {
@@ -80,10 +80,6 @@ const Header: React.FC = () => {
     },
     {
       title: "About Us",
-      path: "",
-    },
-    {
-      title: "Contact Us",
       path: "",
     },
   ];
@@ -150,7 +146,7 @@ const Header: React.FC = () => {
               <nav className="hidden lg:flex items-center gap-10">
                 <a href="" className="relative group py-2">
                   <span className=" font-medium text-slate-800 transition-colors group-hover:text-slate-900">
-                    Home
+                    Case Studies
                   </span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100"></span>
                 </a>
@@ -318,22 +314,15 @@ const Header: React.FC = () => {
                   </span>
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100"></span>
                 </a>
-
-                <a href="" className="relative group py-2">
-                  <span className=" font-medium text-slate-800 transition-colors group-hover:text-slate-900">
-                    Contact Us
-                  </span>
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100"></span>
-                </a>
               </nav>
 
               {/* CALL TO ACTION */}
               <div className="hidden xl:block">
                 <button className="group relative px-8 py-4 bg-slate-900 text-white rounded-full font-semibold  tracking-[0.1em] overflow-hidden transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95">
-                  <span className="relative z-10 flex items-center gap-3">
-                    Start Project
+                  <span className="relative z-10 flex items-center gap-2">
+                    Contact Us
                     <ArrowUpRight
-                      size={14}
+                      size={24}
                       className="group-hover:rotate-45 transition-transform duration-500"
                     />
                   </span>
@@ -342,11 +331,18 @@ const Header: React.FC = () => {
               </div>
 
               {/* MOBILE TRIGGER */}
-              <button
+              {/* <button
                 onClick={() => setIsOpen(true)}
                 className="xl:hidden md:p-2 text-slate-900"
               >
-                <Menu size={24} />
+                <Menu />
+              </button> */}
+
+              <button onClick={() => setIsOpen(true)} className="xl:hidden ">
+                {/* Modern Icon Container */}
+                <div className="relative p-2 bg-slate-900 rounded-lg flex items-center justify-center transition-transform duration-500 group-hover:rotate-[360deg]">
+                  <Menu size={24} strokeWidth={2} className="text-white" />
+                </div>
               </button>
             </div>
           </div>
@@ -617,6 +613,8 @@ const Header: React.FC = () => {
       >
         {/* [@media(min-height:500px)]:flex-col ensure korbe boro screen e flex thakbe,
 
+
+
             chhoto screen e flex layout kaaj korbe na jate scroll smoothly kaaj kore */}
 
         <div className="h-full flex flex-col [@media(max-height:500px)]:block overflow-y-auto overflow-x-hidden no-scrollbar relative">
@@ -645,13 +643,15 @@ const Header: React.FC = () => {
                     }
                     className={`flex items-center justify-between py-3.5 px-4 rounded-xl cursor-pointer transition-all duration-400
 
+
+
                     ${
                       openDropdown === index
                         ? "bg-slate-900 text-white shadow-lg"
                         : "bg-transparent text-slate-700 active:bg-slate-50"
                     }`}
                   >
-                    <span className="text-lg font-bold tracking-tight capitalize">
+                    <span className="text-xl font-bold tracking-tight capitalize">
                       {link.title}
                     </span>
 
@@ -660,7 +660,7 @@ const Header: React.FC = () => {
                         className={`transition-transform duration-500 ${openDropdown === index ? "rotate-180" : ""}`}
                       >
                         <ChevronDown
-                          size={20}
+                          size={24}
                           className={
                             openDropdown === index
                               ? "text-white"
@@ -679,23 +679,27 @@ const Header: React.FC = () => {
                           : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="space-y-2 pl-2 mt-1 border-l-2 border-slate-50 ml-2">
+                      <div className="space-y-2 pl-2 mt-1 border-l-2 border-slate-100 ml-2">
                         {link.dropdown.map((sub, i) => (
                           <div
                             key={i}
                             className="p-3 rounded-xl border border-slate-50 active:bg-indigo-50 transition-all flex items-center gap-3"
                           >
                             {/* <div className="w-9 h-9 rounded-lg bg-slate-50 flex items-center justify-center text-indigo-600 shrink-0">
+
                               <sub.icon size={16} />
+
                             </div> */}
 
                             <div className="flex-1 min-w-0">
-                              <h4 className="text-[15px] font-bold text-slate-900 leading-tight">
+                              <h4 className="text-lg  font-bold text-slate-900 leading-tight">
                                 {sub.title}
                               </h4>
 
                               {/* <p className="hidden [@media(min-height:600px)]:block text-[11px] text-slate-400 font-medium mt-1 line-clamp-1">
+
                                 {sub.desc}
+
                               </p> */}
                             </div>
                           </div>
@@ -712,14 +716,16 @@ const Header: React.FC = () => {
 
           {/* [@media(min-height:500px)]:shrink-0 ensure korbe boro screen e footer fixed/shrink thakbe,
 
+
+
               chhoto screen e eta nav-link er por ashbe */}
 
           <div className="p-6  border-t border-slate-100 [@media(min-height:500px)]:shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
             <div className="flex flex-col gap-4">
-              <button className="w-full flex items-center justify-between py-3 px-6 bg-slate-950 text-white rounded-full font-bold uppercase text-sm tracking-[0.1em] active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
-                Start a Project
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
-                  <ArrowUpRight size={16} className="text-white" />
+              <button className="w-full flex items-center justify-between py-2 pl-6 pr-2 bg-slate-950 text-white rounded-full font-bold text-base uppercase text-lg tracking-[0.1em] active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
+                Contact Us
+                <div className="p-2 rounded-full bg-white/90 flex items-center justify-center">
+                  <ArrowUpRight size={28} className="text-slate-950" />
                 </div>
               </button>
             </div>
