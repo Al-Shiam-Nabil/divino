@@ -403,13 +403,14 @@ const Header: React.FC = () => {
         </div>
       </div> */}
 
-      <div
+      {/* base */}
+      {/* <div
         className={`fixed inset-0 z-[110] sm:w-[400px] bg-gradient-to-tr from-[#FDF6E1] to-[#E9F8FD] transition-all duration-[0.8s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
           isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
         }`}
       >
         <div className="h-full flex flex-col p-8 md:p-10">
-          {/* Header Section */}
+          
           <div className="flex justify-between items-center mb-12">
             <img src={Logo} alt="Logo" className="w-28 object-contain" />
             <button
@@ -420,7 +421,7 @@ const Header: React.FC = () => {
             </button>
           </div>
 
-          {/* Navigation Links */}
+          
           <div className="flex-1 overflow-y-auto no-scrollbar">
             <div className="space-y-2">
               {navLinks.map((link, index) => (
@@ -442,7 +443,7 @@ const Header: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Dropdown with Smooth Animation */}
+                 
                   {link.dropdown && (
                     <div
                       className={`overflow-hidden transition-all duration-500 ease-in-out ${
@@ -468,11 +469,139 @@ const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* Footer Button */}
+      
           <div className="pt-6">
             <button className="w-full py-5 bg-slate-900 text-white text-md font-bold rounded-2xl uppercase tracking-[0.15em] shadow-xl hover:bg-slate-800 hover:shadow-slate-900/30 active:scale-[0.98] transition-all duration-300">
               Start a Project
             </button>
+          </div>
+        </div>
+      </div> */}
+
+      {/* MOBILE OVERLAY - Sophisticated IT Agency UI */}
+      <div
+        className={`fixed inset-0 z-[110] sm:w-[420px] bg-white transition-all duration-[0.8s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
+          isOpen
+            ? "translate-x-0 shadow-[0_0_60px_rgba(0,0,0,0.1)]"
+            : "-translate-x-full"
+        }`}
+      >
+        <div className="h-full flex flex-col relative">
+          {/* 1. Header Section */}
+          <div className="p-8 flex justify-between items-center border-b border-slate-50">
+            <img src={Logo} alt="Logo" className="w-28 object-contain" />
+            <button
+              onClick={() => setIsOpen(false)}
+              className="w-12 h-12 flex items-center justify-center bg-slate-50 text-slate-900 rounded-full hover:bg-indigo-600 hover:text-white transition-all duration-500"
+            >
+              <X size={20} />
+            </button>
+          </div>
+
+          {/* 2. Navigation Area */}
+          <div className="flex-1 overflow-y-auto px-6 py-8 no-scrollbar">
+            <div className="space-y-4">
+              {navLinks.map((link, index) => (
+                <div key={index} className="group">
+                  <div
+                    onClick={() =>
+                      setOpenDropdown((prev) => (prev === index ? null : index))
+                    }
+                    className={`flex items-center justify-between p-5 rounded-2xl cursor-pointer transition-all duration-400
+                      ${
+                        openDropdown === index
+                          ? "bg-slate-900 text-white shadow-xl"
+                          : "bg-transparent text-slate-700 hover:bg-slate-50"
+                      }`}
+                  >
+                    <span className="text-xl font-bold tracking-tight uppercase">
+                      {link.title}
+                    </span>
+                    {link.dropdown && (
+                      <div
+                        className={`transition-transform duration-500 ${openDropdown === index ? "rotate-180" : ""}`}
+                      >
+                        <ChevronDown
+                          size={20}
+                          className={
+                            openDropdown === index
+                              ? "text-white"
+                              : "text-slate-400"
+                          }
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Dropdown with Modern Card Feel */}
+                  {link.dropdown && (
+                    <div
+                      className={`overflow-hidden transition-all duration-700 ease-in-out ${
+                        openDropdown === index
+                          ? "max-h-[500px] opacity-100 mt-4"
+                          : "max-h-0 opacity-0"
+                      }`}
+                    >
+                      <div className="space-y-3 pl-4">
+                        {link.dropdown.map((sub, i) => (
+                          <div
+                            key={i}
+                            className="group/sub p-4 rounded-2xl border border-slate-100 hover:border-indigo-500/30 hover:bg-indigo-50/50 transition-all cursor-pointer flex items-center gap-4"
+                          >
+                            <div className="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center text-indigo-600 group-hover/sub:bg-indigo-600 group-hover/sub:text-white transition-all">
+                              <sub.icon size={18} />
+                            </div>
+                            <div className="flex-1">
+                              <h4 className="text-[14px] font-bold text-slate-900 uppercase tracking-wide">
+                                {sub.title}
+                              </h4>
+                              <p className="text-[11px] text-slate-400 font-medium leading-tight">
+                                {sub.desc}
+                              </p>
+                            </div>
+                            <ArrowUpRight
+                              size={14}
+                              className="opacity-0 group-hover/sub:opacity-100 transition-all text-indigo-600"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 3. Refined Footer Area */}
+          <div className="p-8 bg-slate-50/50 border-t border-slate-100 mt-auto">
+            <div className="flex flex-col gap-6">
+              <div className="space-y-1">
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-indigo-600">
+                  Get in touch
+                </span>
+                <p className="text-lg font-bold text-slate-900 tracking-tight">
+                  contact@divino.agency
+                </p>
+              </div>
+
+              <button className="w-full flex items-center justify-between p-5 bg-slate-900 text-white rounded-2xl font-bold uppercase text-[12px] tracking-widest hover:bg-indigo-600 transition-all duration-500 group shadow-lg shadow-slate-900/10">
+                Start a Project
+                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:rotate-45 transition-transform duration-500">
+                  <ArrowUpRight size={18} />
+                </div>
+              </button>
+
+              <div className="flex justify-between items-center opacity-40">
+                <span className="text-[9px] font-bold uppercase tracking-widest text-slate-500 italic">
+                  Leading IT Solutions
+                </span>
+                <div className="flex gap-4">
+                  <div className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
