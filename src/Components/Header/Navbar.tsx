@@ -660,7 +660,7 @@ const Header: React.FC = () => {
                         className={`transition-transform duration-500 ${openDropdown === index ? "rotate-180" : ""}`}
                       >
                         <ChevronDown
-                          size={18}
+                          size={20}
                           className={
                             openDropdown === index
                               ? "text-white"
