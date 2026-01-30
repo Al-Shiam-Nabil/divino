@@ -607,48 +607,42 @@ const Header: React.FC = () => {
       </div> */}
 
       {/* MOBILE OVERLAY - Optimized for Mobile UX */}
-      {/* 1. h-[100dvh] use kora hoyeche jate address bar er niche footer na jay.
-        2. overflow-hidden ensure kore sidebar ta screen size e fixed thakbe.
-      */}
       <div
-        className={`fixed inset-0 z-[110] w-full sm:w-[400px] bg-white transition-all duration-[0.5s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
+        className={`fixed inset-y-0 left-0 z-[110] w-full sm:w-[400px] bg-white transition-transform duration-[0.5s] cubic-bezier(0.16, 1, 0.3, 1) xl:hidden ${
           isOpen ? "translate-x-0 shadow-2xl" : "-translate-x-full"
         }`}
-        style={{ height: "100dvh" }}
+        /* 'dvh' er bodole 'h-screen' ba fixed height bebohar kora hoyeche jate address bar asha-jawa korle sidebar resize na hoy */
+        style={{ height: "100%", minHeight: "-webkit-fill-available" }}
       >
         <div className="h-full flex flex-col overflow-hidden relative">
-          {/* 1. Header Section - Shrink bondho kora hoyeche */}
-          <div className="p-4 min-[500px]:p-6 flex justify-between items-center border-b border-slate-50 shrink-0">
-            <img
-              src={Logo}
-              alt="Logo"
-              className="w-20 min-[500px]:w-24 object-contain"
-            />
+          {/* 1. Header Section - Fixed at Top */}
+          <div className="p-5 flex justify-between items-center border-b border-slate-50 shrink-0 bg-white">
+            <img src={Logo} alt="Logo" className="w-24 object-contain" />
             <button
               onClick={() => setIsOpen(false)}
-              className="w-9 h-9 flex items-center justify-center bg-slate-50 text-slate-900 rounded-full active:scale-90 transition-all"
+              className="w-10 h-10 flex items-center justify-center bg-slate-50 text-slate-900 rounded-full active:scale-90 transition-all border border-slate-100"
             >
-              <X size={18} />
+              <X size={20} />
             </button>
           </div>
 
           {/* 2. Navigation Area - Scrollable Section */}
-          <div className="flex-1 overflow-y-auto px-4 min-[500px]:px-5 py-2 no-scrollbar">
-            <div className="flex flex-col gap-1 min-[500px]:gap-2 py-2">
+          <div className="flex-1 overflow-y-auto px-5 no-scrollbar">
+            <div className="flex flex-col gap-2 py-6">
               {navLinks.map((link, index) => (
                 <div key={index} className="w-full">
                   <div
                     onClick={() =>
                       setOpenDropdown((prev) => (prev === index ? null : index))
                     }
-                    className={`flex items-center justify-between py-2.5 px-4 min-[500px]:py-3 rounded-lg cursor-pointer transition-all duration-400 
+                    className={`flex items-center justify-between py-3.5 px-4 rounded-xl cursor-pointer transition-all duration-400 
                     ${
                       openDropdown === index
-                        ? "bg-slate-900 text-white shadow-md"
+                        ? "bg-slate-900 text-white shadow-lg"
                         : "bg-transparent text-slate-700 active:bg-slate-50"
                     }`}
                   >
-                    <span className="text-base min-[500px]:text-lg font-bold tracking-tight capitalize">
+                    <span className="text-lg font-bold tracking-tight capitalize">
                       {link.title}
                     </span>
                     {link.dropdown && (
@@ -656,7 +650,7 @@ const Header: React.FC = () => {
                         className={`transition-transform duration-500 ${openDropdown === index ? "rotate-180" : ""}`}
                       >
                         <ChevronDown
-                          size={16}
+                          size={18}
                           className={
                             openDropdown === index
                               ? "text-white"
@@ -667,34 +661,30 @@ const Header: React.FC = () => {
                     )}
                   </div>
 
-                  {/* Dropdown logic for short screens:
-                    - max-h use kora hoyeche jate dropdown boro holeo navigation area scrollable thake.
-                  */}
+                  {/* Dropdown Items */}
                   {link.dropdown && (
                     <div
                       className={`overflow-hidden transition-all duration-500 ease-in-out ${
                         openDropdown === index
-                          ? "max-h-[1000px] opacity-100 mt-1 mb-1"
+                          ? "max-h-[1000px] opacity-100 mt-2 mb-2"
                           : "max-h-0 opacity-0"
                       }`}
                     >
-                      <div className="space-y-1.5 pl-2 mt-1">
+                      <div className="space-y-2 pl-2 mt-1 border-l-2 border-slate-50 ml-2">
                         {link.dropdown.map((sub, i) => (
                           <div
                             key={i}
-                            className="p-2.5 rounded-xl border border-slate-50 active:bg-indigo-50 transition-all flex items-center gap-3"
+                            className="p-3 rounded-xl border border-slate-50 active:bg-indigo-50 transition-all flex items-center gap-3"
                           >
-                            <div className="w-8 h-8 rounded-lg bg-slate-50 flex items-center justify-center text-indigo-600 shrink-0">
-                              <sub.icon size={15} />
+                            <div className="w-9 h-9 rounded-lg bg-slate-50 flex items-center justify-center text-indigo-600 shrink-0">
+                              <sub.icon size={16} />
                             </div>
-                            <div className="flex-1">
-                              <h4 className="text-[13px] font-bold text-slate-900 leading-none">
+                            <div className="flex-1 min-w-0">
+                              <h4 className="text-[14px] font-bold text-slate-900 leading-tight">
                                 {sub.title}
                               </h4>
-                              {/* 500px er niche description hide kora hoyeche clutter komate, 
-                                jate user dropdown khulle footer-er karone scroll kora na lage.
-                              */}
-                              <p className="hidden [@media(min-height:600px)]:block text-[10px] text-slate-400 font-medium mt-1 line-clamp-1">
+                              {/* Height kom hole auto scroll kaj korbe content-er bhitore */}
+                              <p className="hidden [@media(min-height:600px)]:block text-[11px] text-slate-400 font-medium mt-1 line-clamp-1">
                                 {sub.desc}
                               </p>
                             </div>
@@ -708,32 +698,32 @@ const Header: React.FC = () => {
             </div>
           </div>
 
-          {/* 3. Refined Footer - Sab somoy niche thakbe (shrink-0) */}
-          <div className="p-4 pb-6 min-[500px]:p-6 min-[500px]:pb-8 bg-slate-50 border-t border-slate-100 shrink-0">
-            <div className="flex flex-col gap-3 min-[500px]:gap-4">
+          {/* 3. Footer Area - Fixed at Bottom with Safe Area Inset */}
+          <div className="p-6 bg-slate-50 border-t border-slate-100 shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
+            <div className="flex flex-col gap-4">
               <div className="flex justify-between items-center px-1">
-                <div className="space-y-0">
-                  <span className="text-[8px] min-[500px]:text-[9px] font-black uppercase tracking-wider text-indigo-600 leading-none">
-                    Enquiry
+                <div className="space-y-0.5">
+                  <span className="text-[9px] font-black uppercase tracking-widest text-indigo-600 leading-none">
+                    Collaboration
                   </span>
-                  <p className="text-xs min-[500px]:text-sm font-bold text-slate-900">
+                  <p className="text-sm font-bold text-slate-900">
                     contact@divino.agency
                   </p>
                 </div>
-                {/* Landscape mode ba short height phone e online status hide kora hoyeche 
-                  jate email address ta bhalo moto dekha jay.
-                */}
-                <div className="hidden min-[450px]:flex items-center gap-1.5 bg-green-100 px-2 py-0.5 min-[500px]:py-1 rounded-full">
-                  <div className="w-1 h-1 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-[8px] font-bold text-green-700 uppercase">
-                    Online
+                {/* Active Status */}
+                <div className="hidden min-[400px]:flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-slate-200">
+                  <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-[10px] font-bold text-slate-600 uppercase tracking-tighter">
+                    Available
                   </span>
                 </div>
               </div>
 
-              <button className="w-full flex items-center justify-between p-3 min-[500px]:p-4 bg-slate-900 text-white rounded-full font-bold uppercase text-[10px] min-[500px]:text-[11px] tracking-widest active:scale-[0.98] transition-all shadow-lg">
+              <button className="w-full flex items-center justify-between py-2 px-6 bg-slate-950 text-white rounded-full font-bold uppercase text-sm tracking-[0.1em] active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
                 Start a Project
-                <ArrowUpRight size={14} className="text-white/50" />
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
+                  <ArrowUpRight size={16} className="text-white" />
+                </div>
               </button>
             </div>
           </div>
