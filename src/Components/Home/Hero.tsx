@@ -14,7 +14,7 @@ export default function Hero() {
           </h1>
 
           {/* ৬. ট্যাগস (Flex wrap is already handled) */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-10">
+          {/* <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-10">
             {["Strategy", "Design", "Technology", "Web Development"].map(
               (tag) => (
                 <span
@@ -25,7 +25,7 @@ export default function Hero() {
                 </span>
               ),
             )}
-          </div>
+          </div> */}
 
           {/* ৭. স্মল টেক্সট (Responsive font size) */}
           <p className="text-[16px] md:text-[20px] text-[#555] leading-relaxed max-w-2xl mb-10 md:mb-12 font-medium">
@@ -36,7 +36,7 @@ export default function Hero() {
 
           {/* ৮. আপনার সিগনেচার বাটন */}
           <div className="w-full max-w-[200px] md:max-w-[230px]">
-            <button className="group cursor-pointer relative w-full h-[56px] md:h-[64px] flex items-center justify-center gap-2 overflow-hidden text-white rounded-full font-bold text-[16px] md:text-[18px] transition-all active:scale-[0.98] shadow-lg">
+            <button className="group cursor-pointer relative w-full h-[52px] md:h-[64px] flex items-center justify-center gap-2 overflow-hidden text-white rounded-full font-bold text-[16px] md:text-[18px] transition-all active:scale-[0.98] shadow-lg">
               {/* বাটন ব্যাকগ্রাউন্ড অ্যানিমেশন */}
               <div className="absolute inset-0 bg-[linear-gradient(45deg,#0A111B,#0B2B4C,#1E3A8A,#0A111B)] bg-[length:300%_300%] animate-gradient-move"></div>
 
