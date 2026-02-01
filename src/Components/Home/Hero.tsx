@@ -15,8 +15,8 @@ const Hero: React.FC = () => {
             </div>
 
             {/* Headline with vibrant modern multi-color gradient */}
-            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black  tracking-tight text-slate-900 mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 leading-[1.2] sm:leading-[1.1]">
-              Design-driven <br />
+            <h1 className="text-[38px] sm:text-6xl md:text-7xl lg:text-8xl font-black  tracking-tight text-slate-900 mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 leading-[1.4] sm:leading-[1.1]">
+              Design driven <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#6366f1] via-[#d946ef] via-[#f43f5e] to-[#f59e0b] bg-[length:200%_auto] animate-gradient">
                 digital solutions
               </span>{" "}
