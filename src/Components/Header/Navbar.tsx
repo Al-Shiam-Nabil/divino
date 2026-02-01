@@ -127,7 +127,7 @@ const Header: React.FC = () => {
         <Container>
           <div className="w-full mx-auto ">
             <div
-              className={`flex items-center justify-between ${scrolled ? "px-4" : "px-0"} md:px-8 py-3 md:py-2 transition-all duration-500 rounded-full ${
+              className={`flex items-center justify-between ${scrolled ? "px-4" : "px-0"} md:px-8 lg:pr-6 py-3 md:py-2 transition-all duration-500 rounded-full ${
                 scrolled
                   ? "bg-white/50 backdrop-blur-xl shadow-[0_20px_50px_-15px_rgba(0,0,0,0.08)] "
                   : "bg-transparent"
@@ -168,7 +168,7 @@ const Header: React.FC = () => {
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-indigo-600 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100"></span>
                     </div>
                     <ChevronDown
-                      size={16}
+                      size={20}
                       className="transition-transform duration-500 group-hover:rotate-180"
                     />
                   </button>
@@ -318,17 +318,6 @@ const Header: React.FC = () => {
 
               {/* CALL TO ACTION */}
               <div className="hidden xl:block">
-                {/* <button className="group relative px-8 py-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full text-base font-semibold  tracking-[0.1em] overflow-hidden transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95">
-                  <span className="relative z-10 flex items-center gap-2">
-                    Contact Us
-                    <ArrowUpRight
-                      size={24}
-                      className="group-hover:rotate-45 transition-transform duration-500"
-                    />
-                  </span>
-                  <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)"></div>
-                </button> */}
-
                 <button className="group relative overflow-hidden px-8 py-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95 cursor-pointer">
                   {/* Background Reveal */}
                   <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)"></div>
