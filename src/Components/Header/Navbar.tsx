@@ -319,7 +319,6 @@ const Header: React.FC = () => {
               {/* CALL TO ACTION */}
               <div className="hidden xl:block">
                 {/* <button className="group relative overflow-hidden px-8 py-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95 cursor-pointer">
-                  
                   <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)"></div>
 
                   <div className="relative z-10 flex items-center gap-2">
@@ -352,62 +351,43 @@ const Header: React.FC = () => {
                   />
                 </button> */}
 
-                <button className="group relative overflow-hidden px-8 py-4 text-white rounded-full transition-all duration-500 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.5)] cursor-pointer isolate border border-white/5 hover:border-blue-500/50">
-                  {/* 1. Base Gradient Layer - Flowing Background (Speeds up on hover) */}
-                  <div className="absolute inset-0 z-0 bg-[length:200%_200%] [animation:gradient-flow_8s_linear_infinite] group-hover:[animation-duration:3s] bg-gradient-to-br from-[#0A111B] via-[#0B2B4C] to-[#0A111B] transition-all duration-700"></div>
+                <button className="group relative overflow-hidden px-10 py-4 bg-black text-white rounded-full transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/30 active:scale-95 cursor-pointer isolate">
+                  {/* 1. Continuous Liquid Gradient Layer - Always Moving */}
+                  <div className="absolute inset-0 z-0 bg-[length:300%_300%] animate-[liquid-flow_6s_ease-in-out_infinite] bg-gradient-to-br from-[#050a14] via-[#0B2B4C] via-[#1e3a8a] to-[#050a14]"></div>
 
-                  {/* 2. Edge Glow / Border Beam (Visible on Hover) */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
-                    <div className="absolute inset-[-1px] rounded-full border border-blue-400/30 blur-[1px]"></div>
-                  </div>
+                  {/* 2. Indigo Slide-up Overlay (From user's request) */}
+                  <div className="absolute inset-0 z-10 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)"></div>
 
-                  {/* 3. Sweeping Shine Effect (Becomes more crisp on hover) */}
-                  <div className="absolute inset-0 [animation:sweep_4s_infinite_linear] group-hover:[animation-duration:2s] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full z-10 pointer-events-none"></div>
+                  {/* 3. Subtle Surface Shimmer */}
+                  <div className="absolute inset-0 z-15 opacity-30 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"></div>
 
-                  {/* 4. Subtle Center Pulse Glow */}
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.2)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
-
-                  {/* 5. Button Content */}
-                  <div className="relative z-20 flex items-center gap-3">
-                    <span className="text-base font-semibold tracking-[0.1em] capitalize transition-all duration-500 group-hover:text-blue-50">
+                  {/* 4. Button Content */}
+                  <div className="relative z-20 flex items-center gap-1">
+                    <span className="text-base font-semibold tracking-[0.1em]">
                       Contact Us
                     </span>
 
                     {/* Infinity Arrow Container */}
                     <div className="relative w-5 h-5 overflow-hidden">
-                      <div className="relative w-full h-full flex flex-col [animation:icon-loop_0.8s_linear_infinite] group-hover:[animation-duration:0.5s]">
-                        {/* Center Icon */}
+                      <div className="relative w-full h-full flex flex-col transition-all group-hover:[animation:icon-loop_0.5s_linear_infinite]">
                         <div className="absolute inset-0 flex items-center justify-center shrink-0">
-                          <ArrowUpRight
-                            size={20}
-                            strokeWidth={2.5}
-                            className="group-hover:text-blue-300 transition-colors"
-                          />
+                          <ArrowUpRight size={20} strokeWidth={2.5} />
                         </div>
-                        {/* Transition Icon */}
                         <div className="absolute inset-0 flex items-center justify-center shrink-0 translate-y-full -translate-x-full">
-                          <ArrowUpRight
-                            size={20}
-                            strokeWidth={2.5}
-                            className="group-hover:text-blue-300 transition-colors"
-                          />
+                          <ArrowUpRight size={20} strokeWidth={2.5} />
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Keyframes for the Modern Kinetic Feel */}
+                  {/* Kinetic CSS Keyframes */}
                   <style
                     dangerouslySetInnerHTML={{
                       __html: `
-                  @keyframes gradient-flow {
+                  @keyframes liquid-flow {
                     0% { background-position: 0% 50%; }
                     50% { background-position: 100% 50%; }
                     100% { background-position: 0% 50%; }
-                  }
-                  @keyframes sweep {
-                    0% { transform: translateX(-150%) skewX(-15deg); }
-                    100% { transform: translateX(150%) skewX(-15deg); }
                   }
                   @keyframes icon-loop {
                     0% { transform: translate(0, 0); }
@@ -811,11 +791,58 @@ const Header: React.FC = () => {
 
           <div className="p-6  border-t border-slate-100 [@media(min-height:500px)]:shrink-0 pb-[max(2rem,env(safe-area-inset-bottom))]">
             <div className="flex flex-col gap-4">
-              <button className="w-full h-[72px] flex items-center justify-between py-2 pl-6 pr-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full font-bold text-[22px] capitalize  active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
+              {/* <button className="w-full h-[72px] flex items-center justify-between py-2 pl-6 pr-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full font-bold text-[22px] capitalize  active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
                 Contact Us
                 <div className="p-2 rounded-full bg-white/90 flex items-center justify-center">
                   <ArrowUpRight size={28} className="text-slate-950" />
                 </div>
+              </button> */}
+
+              <button className="group relative w-full h-[72px] flex items-center justify-between py-2 pl-6 pr-4 overflow-hidden text-white rounded-full font-bold text-[22px] capitalize active:scale-[0.98] transition-all shadow-xl shadow-slate-950/20">
+                {/* ১. মেইন বাটন ব্যাকগ্রাউন্ড অ্যানিমেশন (ডার্ক মুভিং) */}
+                <div className="absolute inset-0 bg-[linear-gradient(45deg,#0A111B,#0B2B4C,#1E3A8A,#0A111B)] bg-[length:300%_300%] animate-gradient-move"></div>
+
+                {/* ২. বাটন টেক্সট */}
+                <span className="relative z-10">Contact Us</span>
+
+                {/* ৩. আইকন সার্কেল (যেখানে হোয়াইটিশ অ্যানিমেশন হবে) */}
+                <div className="relative z-10 w-12 h-12 rounded-full overflow-hidden flex items-center justify-center shadow-lg bg-white/10 backdrop-blur-sm">
+                  {/* ৪. সার্কেলের ভেতরের হোয়াইটিশ/সিলভার মুভিং অ্যানিমেশন */}
+                  <div className="absolute inset-0 bg-[linear-gradient(45deg,#f8fafc,#cbd5e1,#ffffff,#e2e8f0,#f8fafc)] bg-[length:250%_250%] animate-whitish-move"></div>
+
+                  {/* ৫. আইকন (স্থির) */}
+                  <ArrowUpRight
+                    size={28}
+                    className="relative z-10 text-slate-900"
+                  />
+                </div>
+
+                {/* সিএসএস অ্যানিমেশন */}
+                <style
+                  dangerouslySetInnerHTML={{
+                    __html: `
+          /* মেইন ডার্ক ব্যাকগ্রাউন্ড মুভমেন্ট */
+          @keyframes gradient-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          .animate-gradient-move {
+            animation: gradient-move 6s ease infinite;
+          }
+
+          /* হোয়াইটিশ সার্কেল ব্যাকগ্রাউন্ড মুভমেন্ট */
+          @keyframes whitish-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          .animate-whitish-move {
+            animation: whitish-move 3s linear infinite;
+          }
+        `,
+                  }}
+                />
               </button>
             </div>
           </div>
