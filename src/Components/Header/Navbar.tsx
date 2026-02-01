@@ -318,7 +318,7 @@ const Header: React.FC = () => {
 
               {/* CALL TO ACTION */}
               <div className="hidden xl:block">
-                <button className="group relative px-8 py-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full text-base font-semibold  tracking-[0.1em] overflow-hidden transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95">
+                {/* <button className="group relative px-8 py-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full text-base font-semibold  tracking-[0.1em] overflow-hidden transition-all hover:scale-[1.03] hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95">
                   <span className="relative z-10 flex items-center gap-2">
                     Contact Us
                     <ArrowUpRight
@@ -327,6 +327,46 @@ const Header: React.FC = () => {
                     />
                   </span>
                   <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)"></div>
+                </button> */}
+
+                <button className="group relative overflow-hidden px-8 py-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95 cursor-pointer">
+                  {/* Background Reveal */}
+                  <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)"></div>
+
+                  {/* Content */}
+                  <div className="relative z-10 flex items-center gap-2">
+                    <span className="text-base font-semibold tracking-[0.1em]">
+                      Contact Us
+                    </span>
+
+                    {/* Infinity Arrow Container */}
+                    <div className="relative w-5 h-5 overflow-hidden">
+                      {/* Wrapper with Inline CSS Animation Logic */}
+                      <div className="relative w-full h-full flex flex-col transition-all group-hover:[animation:icon-loop_0.5s_linear_infinite]">
+                        {/* Center Icon */}
+                        <div className="absolute inset-0 flex items-center justify-center shrink-0 ">
+                          <ArrowUpRight size={22} strokeWidth={2.5} />
+                        </div>
+
+                        {/* Bottom-Left Icon (Entering) */}
+                        <div className="absolute inset-0 flex items-center justify-center shrink-0 translate-y-full -translate-x-full ">
+                          <ArrowUpRight size={22} strokeWidth={2.5} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* One-Step Fix: Global CSS using dangerouslySetInnerHTML to avoid TS errors */}
+                  <style
+                    dangerouslySetInnerHTML={{
+                      __html: `
+          @keyframes icon-loop {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100%, -100%); }
+          }
+        `,
+                    }}
+                  />
                 </button>
               </div>
 
