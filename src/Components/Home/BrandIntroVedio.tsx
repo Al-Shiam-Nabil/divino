@@ -38,24 +38,6 @@ const BrandIntroVedio: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close modal on Escape key
-  // useEffect(() => {
-  //   const handleEsc = (event: KeyboardEvent) => {
-  //     if (event.key === "Escape") setIsModalOpen(false);
-  //   };
-  //   window.addEventListener("keydown", handleEsc);
-  //   return () => window.removeEventListener("keydown", handleEsc);
-  // }, []);
-
-  // Prevent scrolling when modal is open
-  // useEffect(() => {
-  //   if (isModalOpen) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "unset";
-  //   }
-  // }, [isModalOpen]);
-
   const videoSrc = BrandIntro;
 
   return (
