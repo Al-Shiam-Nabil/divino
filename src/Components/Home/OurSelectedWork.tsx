@@ -144,18 +144,18 @@ const ProductCard = ({ product }: { product: Product }) => {
 
       {/* Text Content - Same as your design */}
       <div className="mt-8 space-y-3 px-2">
-        <h3 className="text-3xl font-bold tracking-tight text-[#111] transition-colors duration-300 group-hover:text-gray-600">
+        <h3 className="text-3xl font-bold tracking-tight text-[#111] transition-colors duration-300 group-hover:text-gray-700">
           {product.title}
         </h3>
-        <p className="text-lg text-gray-500 leading-snug font-normal max-w-[90%]">
+        <p className="text-lg text-gray-700 leading-snug font-normal max-w-[90%]">
           {product.description}
         </p>
         
         <div className="flex flex-wrap items-center gap-x-3 pt-1">
           {product.tags.map((tag, index) => (
             <React.Fragment key={index}>
-              <span className="text-sm font-medium text-gray-500 capitalize tracking-widest">{tag}</span>
-              {index !== product.tags.length - 1 && <span className="text-gray-300">•</span>}
+              <span className="text-sm font-medium text-gray-700 capitalize tracking-widest">{tag}</span>
+              {index !== product.tags.length - 1 && <span className="text-gray-400">•</span>}
             </React.Fragment>
           ))}
         </div>
