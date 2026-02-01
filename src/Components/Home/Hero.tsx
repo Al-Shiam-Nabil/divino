@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
                 />
               </button>
 
-              <button className="w-full text-lg font-semibold  sm:w-auto px-10 py-4 bg-transparent text-slate-900 border-2 border-[#0B2B4C] rounded-full  transition-all duration-300  hover:border-slate-900/20 active:scale-95 flex items-center justify-center gap-2 cursor-pointer hover:bg-linear-45 hover:from-[#0A111B] hover:to-[#0B2B4C] hover:text-white ">
+              <button className="w-full text-lg font-semibold  sm:w-auto px-10 py-4 bg-transparent text-slate-900 border border-[#0B2B4C] rounded-full  transition-all duration-300  hover:border-slate-900/20 active:scale-95 flex items-center justify-center gap-2 cursor-pointer hover:bg-linear-45 hover:from-[#0A111B] hover:to-[#0B2B4C] hover:text-white ">
                 Let's Talk
                 <ArrowRight
                   size={20}
