@@ -4,7 +4,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen w-full flex items-center justify-center bg-[linear-gradient(135deg,#ffffff_0%,#f0f4f8_50%,#d9e2ec_100%)] py-12 md:py-20 lg:py-30 px-4">
       {/* ১. মেইন কার্ড (Responsive width & height) */}
-      <div className="relative w-full max-w-[1200px] min-h-[600px] md:h-[800px] py-20 lg:py-30 flex items-center justify-center">
+      <div className="relative w-full max-w-[1200px] min-h-[600px]  md:h-[800px] py-20 lg:py-30 flex items-center justify-center">
         {/* ৪. কন্টেন্ট লেয়ার (Added Padding for mobile) */}
         <div className="relative z-10 max-w-4xl px-4 md:px-8 flex flex-col items-center text-center">
           {/* ৫. হেডলাইন (Responsive font size & Increased Line Height) */}

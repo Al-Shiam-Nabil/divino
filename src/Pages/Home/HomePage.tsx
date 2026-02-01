@@ -1,17 +1,21 @@
 import BrandIntroVedio from "../../Components/Home/BrandIntroVedio";
+import ClientSection from "../../Components/Home/ClientSection";
 import Hero from "../../Components/Home/Hero";
-import SelectedWork from "../../Components/Home/SelectedWork";
-import Services from "../../Components/Home/Services";
+import ServicesSection from "../../Components/Home/ServicesSection";
 import TechStack from "../../Components/Home/TechStack";
 
 export default function HomePage() {
   return (
     <div>
       <Hero />
+
+      <ServicesSection />
+
+      <ClientSection />
       <BrandIntroVedio />
       <TechStack />
-      <Services />
-      <SelectedWork />
+      {/* <Services />
+      <SelectedWork /> */}
     </div>
   );
 }
