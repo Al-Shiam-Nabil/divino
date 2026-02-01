@@ -133,7 +133,10 @@ const Services: React.FC = () => {
 
   return (
     <Container>
-      <section ref={sectionRef} className="pb-32  w-full relative">
+      <section
+        ref={sectionRef}
+        className=" pt-16 pb-20 md:pb-32 md:pt-0  w-full relative"
+      >
         {/* Header */}
         <div className="reveal mb-24 text-center flex flex-col items-center">
           <h2 className="text-[clamp(2.5rem,7vw,4.5rem)] font-[900] leading-[1] tracking-[-0.06em] mb-6 text-slate-900">

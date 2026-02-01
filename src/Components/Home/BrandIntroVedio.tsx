@@ -43,7 +43,7 @@ const BrandIntroVedio: React.FC = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative w-full flex justify-center overflow-hidden py-32"
+      className="relative w-full flex justify-center overflow-hidden py-20 md:pt-32 md:pb-20"
     >
       <div
         className="relative group  transition-all duration-1000 ease-out will-change-[width,transform]"

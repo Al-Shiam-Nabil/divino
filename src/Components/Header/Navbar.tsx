@@ -318,26 +318,21 @@ const Header: React.FC = () => {
 
               {/* CALL TO ACTION */}
               <div className="hidden xl:block">
-                <button className="group relative overflow-hidden px-8 py-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95 cursor-pointer">
-                  {/* Background Reveal */}
+                {/* <button className="group relative overflow-hidden px-8 py-4 bg-linear-45 to-[#0B2B4C] from-[#0A111B] text-white rounded-full transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/20 active:scale-95 cursor-pointer">
+                  
                   <div className="absolute inset-0 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)"></div>
 
-                  {/* Content */}
                   <div className="relative z-10 flex items-center gap-2">
                     <span className="text-base font-semibold tracking-[0.1em]">
                       Contact Us
                     </span>
 
-                    {/* Infinity Arrow Container */}
                     <div className="relative w-5 h-5 overflow-hidden">
-                      {/* Wrapper with Inline CSS Animation Logic */}
                       <div className="relative w-full h-full flex flex-col transition-all group-hover:[animation:icon-loop_0.5s_linear_infinite]">
-                        {/* Center Icon */}
                         <div className="absolute inset-0 flex items-center justify-center shrink-0 ">
                           <ArrowUpRight size={22} strokeWidth={2.5} />
                         </div>
 
-                        {/* Bottom-Left Icon (Entering) */}
                         <div className="absolute inset-0 flex items-center justify-center shrink-0 translate-y-full -translate-x-full ">
                           <ArrowUpRight size={22} strokeWidth={2.5} />
                         </div>
@@ -345,7 +340,6 @@ const Header: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* One-Step Fix: Global CSS using dangerouslySetInnerHTML to avoid TS errors */}
                   <style
                     dangerouslySetInnerHTML={{
                       __html: `
@@ -354,6 +348,72 @@ const Header: React.FC = () => {
             100% { transform: translate(100%, -100%); }
           }
         `,
+                    }}
+                  />
+                </button> */}
+
+                <button className="group relative overflow-hidden px-8 py-4 text-white rounded-full transition-all duration-500 hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.5)] cursor-pointer isolate border border-white/5 hover:border-blue-500/50">
+                  {/* 1. Base Gradient Layer - Flowing Background (Speeds up on hover) */}
+                  <div className="absolute inset-0 z-0 bg-[length:200%_200%] [animation:gradient-flow_8s_linear_infinite] group-hover:[animation-duration:3s] bg-gradient-to-br from-[#0A111B] via-[#0B2B4C] to-[#0A111B] transition-all duration-700"></div>
+
+                  {/* 2. Edge Glow / Border Beam (Visible on Hover) */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 pointer-events-none">
+                    <div className="absolute inset-[-1px] rounded-full border border-blue-400/30 blur-[1px]"></div>
+                  </div>
+
+                  {/* 3. Sweeping Shine Effect (Becomes more crisp on hover) */}
+                  <div className="absolute inset-0 [animation:sweep_4s_infinite_linear] group-hover:[animation-duration:2s] bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full z-10 pointer-events-none"></div>
+
+                  {/* 4. Subtle Center Pulse Glow */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.2)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+
+                  {/* 5. Button Content */}
+                  <div className="relative z-20 flex items-center gap-3">
+                    <span className="text-base font-semibold tracking-[0.1em] capitalize transition-all duration-500 group-hover:text-blue-50">
+                      Contact Us
+                    </span>
+
+                    {/* Infinity Arrow Container */}
+                    <div className="relative w-5 h-5 overflow-hidden">
+                      <div className="relative w-full h-full flex flex-col [animation:icon-loop_0.8s_linear_infinite] group-hover:[animation-duration:0.5s]">
+                        {/* Center Icon */}
+                        <div className="absolute inset-0 flex items-center justify-center shrink-0">
+                          <ArrowUpRight
+                            size={20}
+                            strokeWidth={2.5}
+                            className="group-hover:text-blue-300 transition-colors"
+                          />
+                        </div>
+                        {/* Transition Icon */}
+                        <div className="absolute inset-0 flex items-center justify-center shrink-0 translate-y-full -translate-x-full">
+                          <ArrowUpRight
+                            size={20}
+                            strokeWidth={2.5}
+                            className="group-hover:text-blue-300 transition-colors"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Keyframes for the Modern Kinetic Feel */}
+                  <style
+                    dangerouslySetInnerHTML={{
+                      __html: `
+                  @keyframes gradient-flow {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                  }
+                  @keyframes sweep {
+                    0% { transform: translateX(-150%) skewX(-15deg); }
+                    100% { transform: translateX(150%) skewX(-15deg); }
+                  }
+                  @keyframes icon-loop {
+                    0% { transform: translate(0, 0); }
+                    100% { transform: translate(100%, -100%); }
+                  }
+                `,
                     }}
                   />
                 </button>

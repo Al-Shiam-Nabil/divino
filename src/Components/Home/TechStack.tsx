@@ -50,7 +50,7 @@ const TechStack: React.FC = () => {
   const duplicatedTools = [...tools, ...tools, ...tools];
 
   return (
-    <section className="w-full pb-24 relative overflow-hidden group select-none">
+    <section className="w-full  md:mb-24 relative overflow-hidden group select-none ">
       <div className="flex">
         {/* 
           Marquee Container:
