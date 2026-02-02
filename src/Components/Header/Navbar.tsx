@@ -387,7 +387,7 @@ const Navbar: React.FC = () => {
               </button>
             </div>
           </div>
-        </Container>
+        </Container>n
       </div> */}
 
       <div
@@ -395,8 +395,8 @@ const Navbar: React.FC = () => {
           isVisible ? "translate-y-0" : "-translate-y-full"
         } ${
           hasScrolled
-            ? "bg-white/80 backdrop-blur-xl py-4 lg:py-6"
-            : "bg-transparent py-4 lg:py-6"
+            ? "bg-white/80 backdrop-blur-xl py-3 lg:py-6"
+            : "bg-transparent py-3 lg:py-6"
         }`}
       >
         <Container>
