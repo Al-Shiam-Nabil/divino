@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import React, { useRef, useState } from "react";
 import Vedio1 from "../../assets/brandIntro.mp4";
 // ... (Product interface and products array stay the same)
@@ -111,7 +111,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           }}
         >
           <div className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-lg flex items-center gap-3 shadow-[0_15px_35px_rgba(0,0,0,0.15)] border border-white/50">
-            <span className="text-[11px] font-black capitalize tracking-[0.2em] text-black whitespace-nowrap">
+            <span className="text-[11px] font-black capitalize tracking-[0.1em] text-black whitespace-nowrap">
               View Case Study
             </span>
             <div className="bg-black rounded-full p-1">
@@ -165,8 +165,8 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
 
         {/* View Case Study Link: মোবাইলে সবসময় দেখা যাবে, ডেক্সটপেও চাইলে রাখতে পারেন */}
-        <button className="mt-2 flex lg:hidden items-center gap-2 text-sm font-medium  border-b border-black/20 pb-1 hover:border-black transition-colors">
-          View case study <ArrowUpRight size={16} />
+        <button className="mt-2 flex lg:hidden items-center gap-1 text-base font-medium  border-b border-black/20 pb-1 hover:border-black transition-colors">
+          View case study <ArrowRight size={14} />
         </button>
       </div>
     </div>
