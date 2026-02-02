@@ -175,9 +175,9 @@ const ProductCard = ({ product }: { product: Product }) => {
 
 const OurSelectedWork = () => {
   return (
-    <section className="bg-white py-20 md:py-30">
+    <section className="bg-white pt-20 md:pt-30">
       {/* Container: 1280px max-width, মোবাইলে 0 প্যাডিং (Edge-to-Edge) */}
-      <div className="w-full max-w-[1280px] mx-auto px-0 md:px-8 xl:px-0 ">
+      <div className="w-full max-w-[1280px] mx-auto px-0 md:px-6 lg:px-8 xl:px-0 ">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-10 md:gap-x-12 md:gap-y-24 lg:gap-x-16">
           {products.map((product, index) => (
             <div key={product.id} className={index % 2 !== 0 ? "md:mt-20" : ""}>
