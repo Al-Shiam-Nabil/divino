@@ -4,19 +4,22 @@ import Hero from "../../Components/Home/Hero";
 import OurSelectedWork from "../../Components/Home/OurSelectedWork";
 import ServicesSection from "../../Components/Home/ServicesSection";
 import TechStack from "../../Components/Home/TechStack";
+import WorkFlow from "../../Components/Home/WorkFlow";
 
 export default function HomePage() {
   return (
     <div>
       <Hero />
 
-    <OurSelectedWork/>
+      <OurSelectedWork />
 
       <ServicesSection />
 
       <ClientSection />
       <BrandIntroVedio />
       <TechStack />
+
+      <WorkFlow />
       {/* <Services />
       <SelectedWork /> */}
     </div>
