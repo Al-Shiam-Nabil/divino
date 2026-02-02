@@ -11,13 +11,12 @@ export default function HomePage() {
     <div>
       <Hero />
 
-      <OurSelectedWork />
-
+      <BrandIntroVedio />
+      <TechStack />
       <ServicesSection />
 
       <ClientSection />
-      <BrandIntroVedio />
-      <TechStack />
+      <OurSelectedWork />
 
       <WorkFlow />
       {/* <Services />
