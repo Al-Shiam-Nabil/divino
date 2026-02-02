@@ -157,7 +157,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
 
         {/* NEW Modern Mobile Button */}
-        <button className="group/btn relative inline-flex items-center gap-4 rounded-full pl-7 pr-2 py-2 overflow-hidden transition-all duration-300 ease-out active:scale-95 border border-zinc-200 hover:border-zinc-900 bg-white">
+        <button className="group/btn lg:hidden relative inline-flex items-center gap-4 rounded-full pl-7 pr-2 py-2 overflow-hidden transition-all duration-300 ease-out active:scale-95 border border-zinc-200 hover:border-zinc-900 bg-white">
           {/* Background Fill Hover Effect */}
           <span className="absolute inset-0 bg-zinc-900 translate-y-full transition-transform duration-300 ease-out group-hover/btn:translate-y-0" />
 
