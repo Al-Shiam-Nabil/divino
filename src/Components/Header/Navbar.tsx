@@ -112,6 +112,41 @@ const Navbar: React.FC = () => {
     },
   ];
 
+  //  const serviceItems = [
+  //   {
+  //     title: "Web Engineering",
+  //     desc: "High-performance React & TS ecosystems.",
+  //     icon: Code2,
+  //     image:
+  //       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=800",
+  //     tag: "Performance",
+  //   },
+  //   {
+  //     title: "Brand Identity",
+  //     desc: "Defining visual narratives for modern labels.",
+  //     icon: Palette,
+  //     image:
+  //       "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
+  //     tag: "Creative",
+  //   },
+  //   {
+  //     title: "UX Architecture",
+  //     desc: "Data-backed human interaction design.",
+  //     icon: Layers,
+  //     image:
+  //       "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?auto=format&fit=crop&q=80&w=800",
+  //     tag: "Strategic",
+  //   },
+  //   {
+  //     title: "Scale & Support",
+  //     desc: "Long-term infrastructure and IT strategy.",
+  //     icon: ShieldCheck,
+  //     image:
+  //       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
+  //     tag: "Reliable",
+  //   },
+  // ];
+
   return (
     <>
       {/* <div
@@ -360,8 +395,8 @@ const Navbar: React.FC = () => {
           isVisible ? "translate-y-0" : "-translate-y-full"
         } ${
           hasScrolled
-            ? "bg-white/80 backdrop-blur-xl  py-6"
-            : "bg-transparent py-6"
+            ? "bg-white/80 backdrop-blur-xl py-2 lg:py-6"
+            : "bg-transparent py-2 lg:py-6"
         }`}
       >
         <Container>
