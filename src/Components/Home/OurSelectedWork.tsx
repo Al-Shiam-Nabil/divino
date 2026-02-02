@@ -111,7 +111,7 @@ const ProductCard = ({ product }: { product: Product }) => {
           }}
         >
           <div className="bg-white/95 backdrop-blur-sm px-6 py-3 rounded-lg flex items-center gap-3 shadow-[0_15px_35px_rgba(0,0,0,0.15)] border border-white/50">
-            <span className="text-[11px] font-black capitalize tracking-[0.1em] text-black whitespace-nowrap">
+            <span className="text-[16px] font-semibold capitalize tracking-[0.1em] text-gray-800 whitespace-nowrap">
               View Case Study
             </span>
             <div className="bg-black rounded-full p-1">
