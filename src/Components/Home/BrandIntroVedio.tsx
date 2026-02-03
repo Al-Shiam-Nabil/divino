@@ -4,8 +4,10 @@ import BrandIntro from "../../assets/brandIntro.mp4";
 const videoSrc = BrandIntro;
 
 const BrandIntroVedio: React.FC = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [smoothProgress, setSmoothProgress] = useState(0);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const requestRef = useRef<number | null>(null);
+  const targetProgress = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,53 +16,68 @@ const BrandIntroVedio: React.FC = () => {
       const rect = sectionRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      // ভিডিওটি যখন স্ক্রিনের মাঝখানে থাকবে তখন থেকে ক্যালকুলেশন শুরু হবে
-      // এটি স্ক্রলিং ইফেক্টকে আরও ন্যাচারাল করে
-      const start = viewportHeight;
-      const end = -rect.height;
+      /**
+       * চ্যলেঞ্জ সমাধান: Viewport এর মধ্যেই ফুল উইডথ করা
+       * start: ভিডিও যখন স্ক্রিনের ৮০% নিচে থাকবে তখন বড় হওয়া শুরু হবে।
+       * end: ভিডিও যখন স্ক্রিনের ২০% ওপরে থাকবে তখনই ফুল উইডথ (১০০%) হয়ে যাবে।
+       */
+      const start = viewportHeight * 0.8;
+      const end = viewportHeight * 0.2;
 
       let progress = (start - rect.top) / (start - end);
-      progress = Math.max(0, Math.min(1, progress));
-
-      setScrollProgress(progress);
+      targetProgress.current = Math.max(0, Math.min(1, progress));
     };
 
-    // 'passive: true' পারফরম্যান্স ভালো রাখে
+    const updateAnimation = () => {
+      setSmoothProgress((prev) => {
+        const lerpFactor = 0.1; // মাখন স্মুথনেস এর জন্য
+        return prev + (targetProgress.current - prev) * lerpFactor;
+      });
+      requestRef.current = requestAnimationFrame(updateAnimation);
+    };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
+    requestRef.current = requestAnimationFrame(updateAnimation);
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    };
   }, []);
 
-  /**
-   * আধুনিক ইজিং টুইস্ট:
-   * আমি এখানে 'cubic-bezier' এর মতো একটি লজিক ব্যবহার করেছি।
-   * এটি ভিডিওটিকে শুরুতে ধীরে, মাঝখানে দ্রুত এবং শেষে আবার খুব স্মুথলি বড় হতে সাহায্য করবে।
-   */
   const easedProgress =
-    scrollProgress < 0.5
-      ? 4 * scrollProgress * scrollProgress * scrollProgress
-      : 1 - Math.pow(-2 * scrollProgress + 2, 3) / 2;
+    smoothProgress < 0.5
+      ? 4 * smoothProgress * smoothProgress * smoothProgress
+      : 1 - Math.pow(-2 * smoothProgress + 2, 3) / 2;
 
-  // আপনার ফিক্সড ডাইনামিক ভ্যালুসমূহ
   const scale = 0.8 + easedProgress * 0.2;
   const width = 80 + easedProgress * 20;
-  const borderRadius = window.innerWidth < 768 ? 0 : (1 - easedProgress) * 60;
+  const borderRadius =
+    typeof window !== "undefined" && window.innerWidth < 768
+      ? 0
+      : (1 - easedProgress) * 60;
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-[70vh] lg:min-h-screen flex items-center justify-center bg-white overflow-hidden"
+      className="relative w-full min-h-[80vh] lg:min-h-screen flex items-center justify-center bg-white overflow-hidden"
     >
       <div
-        // duration এবং ease-out টাইম বাড়ানো হয়েছে আরও মাখন স্মুথ ফিলের জন্য
-        className="relative will-change-transform transition-all duration-500 ease-out"
+        className="relative will-change-transform"
         style={{
-          width: window.innerWidth < 768 ? "100%" : `${width}%`,
-          transform: window.innerWidth < 768 ? "none" : `scale(${scale})`,
+          width:
+            typeof window !== "undefined" && window.innerWidth < 768
+              ? "100%"
+              : `${width}%`,
+          transform:
+            typeof window !== "undefined" && window.innerWidth < 768
+              ? "none"
+              : `scale(${scale})`,
         }}
       >
         <div
-          className="relative aspect-[9/16] md:aspect-video overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.25)] transition-all duration-300"
+          className="relative aspect-[9/16] md:aspect-video overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.25)]"
           style={{
             borderRadius: `${borderRadius}px`,
           }}
