@@ -129,7 +129,7 @@ const Testimonials: React.FC<TestimonialProps> = ({
                     {current.experience}
                   </p>
 
-                  <div className="pt-4 md:pt-8">
+                  <div className="pt-4 ">
                     {/* Silk Mesh Badge */}
                     <div className="relative inline-flex items-center gap-3 md:gap-4 px-6 md:px-9 py-3 md:py-4 overflow-hidden rounded-full group cursor-default shadow-[0_15px_35px_rgba(94,126,167,0.15)] border border-white isolate">
                       <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] via-[#eff6ff] to-[#f5f3ff] -z-20" />
@@ -139,8 +139,8 @@ const Testimonials: React.FC<TestimonialProps> = ({
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-in-out -z-10" />
                       <div className="relative flex h-2.5 w-2.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5e7ea7] opacity-40"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#5e7ea7] shadow-[0_0_12px_rgba(94,126,167,0.6)]"></span>
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-40"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500 shadow-[0_0_12px_rgba(94,126,167,0.6)]"></span>
                       </div>
                       <span className="relative z-10 text-[13px] md:text-sm font-bold text-[#334155] tracking-tight">
                         {current.outcome}
@@ -152,7 +152,7 @@ const Testimonials: React.FC<TestimonialProps> = ({
             </div>
 
             {/* ক্লায়েন্ট প্রোফাইল - এটি সবসময় কার্ডের একদম নিচে লেগে থাকবে */}
-            <div className="mt-auto flex items-center gap-4 border-t border-zinc-100 pt-6 md:pt-8">
+            <div className="mt-auto flex items-center gap-4 border-t border-zinc-100 pt-6 ">
               <img
                 src={current.avatar}
                 alt={current.clientName}
@@ -162,7 +162,7 @@ const Testimonials: React.FC<TestimonialProps> = ({
                 <h4 className="text-zinc-900 font-medium text-base md:text-lg leading-none mb-1">
                   {current.clientName}
                 </h4>
-                <p className="text-zinc-400 text-[10px] md:text-xs uppercase tracking-widest font-medium">
+                <p className="text-zinc-400 text-xs capitalize tracking-widest font-medium">
                   {current.role}
                 </p>
               </div>
