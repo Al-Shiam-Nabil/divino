@@ -2,7 +2,6 @@ import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import React, { useCallback, useEffect, useState } from "react";
 import Container from "../UI/Container";
 
-// ১. ডাটা টাইপ ইন্টারফেস
 interface Testimonial {
   id: number;
   clientName: string;
@@ -27,7 +26,7 @@ const defaultData: Testimonial[] = [
     avatar: "https://i.pravatar.cc/150?u=1",
     challenge: "We struggled to define a clear identity in a crowded market.",
     experience:
-      "Divino didn't just design a logo; they deeply understood our culture. Their team felt like an extension of our own, making the complex process feel simple. ",
+      "Divino didn't just design a logo; they deeply understood our culture. Their team felt like an extension of our own, making the complex process feel simple.",
     outcome: "Brand Recognition Increased by 40%",
     image:
       "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800",
@@ -40,7 +39,7 @@ const defaultData: Testimonial[] = [
     challenge:
       "Our conversion rate was dropping due to an outdated user experience.",
     experience:
-      "The technical depth the team brought to our web design was refreshing. They optimized every touchpoint, ensuring our users felt guided at every step. ",
+      "The technical depth the team brought to our web design was refreshing. They optimized every touchpoint, ensuring our users felt guided at every step.",
     outcome: "Sales Conversion Boosted by 25%",
     image:
       "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800",
@@ -49,33 +48,24 @@ const defaultData: Testimonial[] = [
 
 const Testimonials: React.FC<TestimonialProps> = ({
   items = defaultData,
-  autoPlayInterval = 5000, // ডিফল্ট ৫ সেকেন্ড পর পর চেঞ্জ হবে
+  autoPlayInterval = 5000,
 }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // নেক্সট স্লাইড লজিক
   const nextSlide = useCallback(() => {
     setActiveIndex((prev) => (prev === items.length - 1 ? 0 : prev + 1));
   }, [items.length]);
 
-  // প্রিভিয়াস স্লাইড লজিক
   const prevSlide = () => {
     setActiveIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
   };
 
-  /**
-   * অটো-প্লে ইফেক্ট:
-   * এটি নির্দিষ্ট সময় পর পর nextSlide ফাংশন কল করবে।
-   * মাউস হভার করলে (isPaused) এটি স্টপ থাকবে।
-   */
   useEffect(() => {
     if (isPaused) return;
-
     const interval = setInterval(() => {
       nextSlide();
     }, autoPlayInterval);
-
     return () => clearInterval(interval);
   }, [nextSlide, autoPlayInterval, isPaused]);
 
@@ -83,138 +73,106 @@ const Testimonials: React.FC<TestimonialProps> = ({
 
   return (
     <section
-      className="relative w-full py-20 lg:py-32 bg-[#FAFAFA] overflow-hidden"
-      // মাউস ভেতরে আনলে অটো-প্লে পজ হবে
+      className="relative w-full py-12 md:py-20 lg:py-32 bg-[#FAFAFA] overflow-hidden"
       onMouseEnter={() => setIsPaused(true)}
-      // মাউস সরালে অটো-প্লে আবার চালু হবে
       onMouseLeave={() => setIsPaused(false)}
     >
       <Container>
         {/* Header Section */}
-        <div className="mb-12 lg:mb-18">
-          <h2 className="text-2xl md:text-[45px] font-medium text-center text-zinc-900 tracking-tight leading-tight">
+        <div className="mb-8 md:mb-12 lg:mb-18 text-center">
+          <h2 className="text-2xl md:text-3xl lg:text-[45px] font-bold text-zinc-900 tracking-tight leading-tight">
             Relationships Built on Results.
-            {/* <span className="italic font-serif text-zinc-500">Results.</span> */}
           </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-center">
-          {/* বাম পাশের কন্টেন্ট */}
-          <div className="w-full lg:w-[60%] min-h-[480px] flex flex-col justify-between">
-            <div className="relative">
-              <div className="flex items-center justify-between mb-10">
+        <div className="flex flex-col lg:flex-row gap-6 md:gap-12 lg:gap-24 items-center mt-15 md:mt-20 ">
+          {/* বাম পাশের কন্টেন্ট - নির্দিষ্ট উচ্চতা দেওয়া হয়েছে যাতে কার্ড সাইজ না বদলায় */}
+          <div className="w-full lg:w-[60%] flex flex-col justify-between min-h-[420px] md:min-h-[580px] lg:min-h-[600px]">
+            <div className="flex-grow">
+              <div className="flex items-center justify-between mb-6 md:mb-10">
                 <div className="text-[#5e7ea7]">
-                  <Quote size={50} fill="currentColor" />
+                  <Quote
+                    size={40}
+                    className="md:w-[50px] md:h-[50px]"
+                    fill="currentColor"
+                  />
                 </div>
-                {/* নেভিগেশন বাটন */}
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 md:gap-3">
                   <button
                     onClick={prevSlide}
-                    className="p-3.5 rounded-full border border-zinc-200 hover:bg-black hover:text-white transition-all duration-300 cursor-pointer"
+                    className="p-2.5 md:p-3.5 rounded-full border border-zinc-200 hover:bg-black hover:text-white transition-all duration-300 cursor-pointer"
                   >
-                    <ChevronLeft size={20} />
+                    <ChevronLeft size={18} className="md:w-5 md:h-5" />
                   </button>
                   <button
                     onClick={nextSlide}
-                    className="p-3.5 rounded-full border border-zinc-200 hover:bg-black hover:text-white transition-all duration-300 cursor-pointer"
+                    className="p-2.5 md:p-3.5 rounded-full border border-zinc-200 hover:bg-black hover:text-white transition-all duration-300 cursor-pointer"
                   >
-                    <ChevronRight size={20} />
+                    <ChevronRight size={18} className="md:w-5 md:h-5" />
                   </button>
                 </div>
               </div>
 
-              {/* স্লাইড অ্যানিমেশন */}
+              {/* স্লাইড কন্টেন্ট - ট্রানজিশন এবং হাইট স্ট্যাবিলিটি */}
               <div
                 key={current.id}
-                className="animate-in fade-in slide-in-from-right-8 duration-700"
+                className="animate-in fade-in slide-in-from-right-8 duration-700 h-full flex flex-col"
               >
-                <div className="space-y-8">
-                  <div className="flex items-start gap-4">
-                    <p className="text-zinc-400 text-lg md:text-xl italic leading-snug">
+                <div className="space-y-4 md:space-y-6">
+                  <div className="flex items-start">
+                    <p className="text-zinc-400 text-base md:text-lg lg:text-xl italic leading-snug">
                       "{current.challenge}"
                     </p>
                   </div>
 
-                  <p className="text-[24px] md:text-[32px] text-zinc-800 leading-[1.3] font-medium tracking-tight">
+                  <p className="text-[20px] md:text-[24px] lg:text-[32px] text-zinc-800 leading-[1.3] font-medium tracking-tight">
                     {current.experience}
                   </p>
 
-                  <div className="pt-3 ">
-                    {/* <div className="inline-flex items-center gap-4 px-6 py-3 bg-zinc-900 rounded-full shadow-lg shadow-zinc-200">
-                      <div className="relative flex h-2.5 w-2.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+                  <div className="pt-4 md:pt-8">
+                    {/* Silk Mesh Badge */}
+                    <div className="relative inline-flex items-center gap-3 md:gap-4 px-6 md:px-9 py-3 md:py-4 overflow-hidden rounded-full group cursor-default shadow-[0_15px_35px_rgba(94,126,167,0.15)] border border-white isolate">
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] via-[#eff6ff] to-[#f5f3ff] -z-20" />
+                      <div className="absolute inset-0 -z-10 opacity-40 mix-blend-multiply pointer-events-none">
+                        <div className="absolute top-[-20%] left-[-10%] w-[120%] h-[150%] bg-[radial-gradient(circle_at_center,#60a5fa,#c084fc,#f472b6)] animate-[pulse_6s_ease-in-out_infinite] blur-[45px] opacity-50" />
+                        <div className="absolute bottom-[-20%] right-[-10%] w-[100%] h-[120%] bg-[radial-gradient(circle_at_center,#38bdf8,#818cf8)] animate-[pulse_8s_ease-in-out_infinite] blur-[40px] opacity-40" />
                       </div>
-                      <span className="text-[13px] font-bold text-white uppercase tracking-[0.1em]">
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1500 ease-in-out -z-10" />
+                      <div className="relative flex h-2.5 w-2.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5e7ea7] opacity-40"></span>
+                        <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#5e7ea7] shadow-[0_0_12px_rgba(94,126,167,0.6)]"></span>
+                      </div>
+                      <span className="relative z-10 text-[13px] md:text-sm font-bold text-[#334155] tracking-tight">
                         {current.outcome}
                       </span>
-                    </div> */}
-
-                    <div className="pt-6">
-                      {/* Modern Light Mode Liquid Glass Badge */}
-                      <div className="relative inline-flex items-center gap-4 px-8 py-4 overflow-hidden rounded-full group cursor-default shadow-[0_10px_30px_rgba(0,0,0,0.04)] border border-white/50 isolate">
-                        {/* 1. Frosted Glass Base */}
-                        <div className="absolute inset-0 bg-white/80 backdrop-blur-xl -z-20" />
-
-                        {/* 2. Soft Pastel Water/Aurora Effect (Animated) */}
-                        <div className="absolute inset-0 -z-10 opacity-30 mix-blend-multiply pointer-events-none overflow-hidden">
-                          <div className="absolute top-[-50%] left-[-20%] w-[150%] h-[200%] bg-[conic-gradient(from_0deg_at_50%_50%,#60a5fa,#a78bfa,#f472b6,#60a5fa)] animate-[spin_10s_linear_infinite] blur-[35px]" />
-                        </div>
-
-                        {/* 3. High-Gloss Shine Effect */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/40 to-white/0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out -z-10" />
-
-                        {/* 4. Modern Status Dot */}
-                        <div className="relative flex h-2.5 w-2.5">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-40"></span>
-                          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"></span>
-                        </div>
-
-                        {/* 5. Text Content (Dark & Crisp) */}
-                        <span className="relative z-10 text-sm font-semibold text-zinc-800 capitalize ">
-                          {current.outcome}
-                        </span>
-
-                        <style
-                          dangerouslySetInnerHTML={{
-                            __html: `
-        @keyframes spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-      `,
-                          }}
-                        />
-                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-10 flex items-center gap-4 border-t border-zinc-100 pt-8">
+            {/* ক্লায়েন্ট প্রোফাইল - এটি সবসময় কার্ডের একদম নিচে লেগে থাকবে */}
+            <div className="mt-auto flex items-center gap-4 border-t border-zinc-100 pt-6 md:pt-8">
               <img
                 src={current.avatar}
                 alt={current.clientName}
-                className="w-14 h-14 rounded-full grayscale border border-zinc-100 p-0.5"
+                className="w-10 h-10 md:w-14 md:h-14 rounded-full grayscale border border-zinc-100 p-0.5"
               />
               <div>
-                <h4 className="text-zinc-900 font-bold text-lg leading-none mb-1">
+                <h4 className="text-zinc-900 font-medium text-base md:text-lg leading-none mb-1">
                   {current.clientName}
                 </h4>
-                <p className="text-zinc-400 text-xs uppercase tracking-widest font-medium">
+                <p className="text-zinc-400 text-[10px] md:text-xs uppercase tracking-widest font-medium">
                   {current.role}
                 </p>
               </div>
             </div>
           </div>
 
-          {/* ডান পাশের ইমেজ (Circle Shape) */}
-          <div className="w-full lg:w-[40%] flex justify-center lg:justify-end">
+          {/* ডান পাশের ইমেজ - বড় ডিভাইসে ফিক্সড পজিশন */}
+          <div className="hidden lg:flex w-full lg:w-[40%] justify-center lg:justify-end self-center">
             <div className="relative w-[300px] h-[300px] md:w-[400px] md:h-[400px]">
-              {/* ব্যাকগ্রাউন্ড ডেকোরেটিভ সার্কেল */}
               <div className="absolute inset-0 border-2 border-zinc-200 rounded-full scale-110 -z-10" />
-
               <div className="w-full h-full overflow-hidden rounded-full border-[12px] border-white shadow-2xl shadow-zinc-300/50">
                 <img
                   key={current.id}
@@ -227,6 +185,21 @@ const Testimonials: React.FC<TestimonialProps> = ({
           </div>
         </div>
       </Container>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+          @keyframes pulse {
+            0%, 100% { transform: scale(1) translate(0, 0); opacity: 0.4; }
+            50% { transform: scale(1.1) translate(5%, 5%); opacity: 0.6; }
+          }
+        `,
+        }}
+      />
     </section>
   );
 };

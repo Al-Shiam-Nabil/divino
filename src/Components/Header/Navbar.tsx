@@ -395,8 +395,8 @@ const Navbar: React.FC = () => {
           isVisible ? "translate-y-0" : "-translate-y-full"
         } ${
           hasScrolled
-            ? "bg-white/80 backdrop-blur-xl py-2 lg:py-6"
-            : "bg-transparent py-2 lg:py-6"
+            ? "bg-white/80 backdrop-blur-xl py-2 lg:py-4"
+            : "bg-transparent py-2 lg:py-4"
         }`}
       >
         <Container>
