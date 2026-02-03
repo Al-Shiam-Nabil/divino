@@ -74,7 +74,7 @@ const ServicesSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full py-20 lg:py-30 bg-white ">
+    <section className="w-full my-20 lg:my-30 bg-white">
       <Container>
         <div className="w-full mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24">
           {/* বাম পাশের টেক্সট (স্ক্রিনশট অনুযায়ী) */}
