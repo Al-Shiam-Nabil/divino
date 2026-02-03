@@ -60,7 +60,7 @@ const FinalHandshake: React.FC = () => {
               <div className="flex flex-col gap-1.5">
                 <div>
                   <h4 className="text-[20px] font-bold text-zinc-800 leading-tight tracking-tight">
-                    Abdullah Al Noman
+                    Ranza Diven
                   </h4>
                   <p className="text-[12px] font-medium text-zinc-400 capitalize tracking-[0.1em] mt-1">
                     Founder & Strategist
