@@ -42,7 +42,7 @@ const FAQ: React.FC = () => {
     <section className="py-20 lg:py-32 bg-white overflow-hidden">
       <Container>
         {/* Header Section */}
-        <div className="mb-16 px-4 md:px-0">
+        <div className="mb-16 ">
           <h2 className="text-[36px] md:text-[50px] font-bold text-zinc-900 tracking-tight leading-tight max-w-2xl">
             Everything You Need <br />
             <span className="text-zinc-400 font-medium">to Know.</span>
@@ -51,7 +51,7 @@ const FAQ: React.FC = () => {
 
         <div className="flex flex-col lg:flex-row gap-16 items-start justify-between">
           {/* Left Side: Accordion List */}
-          <div className="w-full lg:flex-[0_0_60%] border-t border-zinc-100 px-4 md:px-0">
+          <div className="w-full lg:flex-[0_0_60%] border-t border-zinc-100 ">
             {faqData.map((item, index) => (
               <div key={index} className="border-b border-zinc-100">
                 <button
@@ -100,8 +100,8 @@ const FAQ: React.FC = () => {
           </div>
 
           {/* Right Side: Floating Card - Full width on Mobile */}
-          <div className="w-screen lg:w-auto -mx-4 md:mx-0 lg:flex-[0_0_35%] lg:sticky lg:top-32 transition-none">
-            <div className="relative px-4 py-8 md:p-12 rounded-none md:rounded-[40px] overflow-hidden text-white shadow-2xl isolate min-h-[400px] flex flex-col justify-center">
+          <div className="w-screen lg:w-auto -mx-6 md:mx-0 lg:flex-[0_0_35%] lg:sticky lg:top-32 transition-none">
+            <div className="relative  py-8 md:p-12 rounded-none md:rounded-[40px] overflow-hidden text-white shadow-2xl isolate min-h-[400px] flex flex-col justify-center">
               {/* --- Infinity Animated Background --- */}
               <div className="absolute inset-0 bg-[#060B12] -z-20" />
               <div className="absolute inset-0 -z-10 opacity-60">
