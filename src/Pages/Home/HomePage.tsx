@@ -1,5 +1,6 @@
 import BrandIntroVedio from "../../Components/Home/BrandIntroVedio";
 import ClientSection from "../../Components/Home/ClientSection";
+import FAQ from "../../Components/Home/FAQ";
 import Hero from "../../Components/Home/Hero";
 import OurSelectedWork from "../../Components/Home/OurSelectedWork";
 import ServicesSection from "../../Components/Home/ServicesSection";
@@ -24,6 +25,8 @@ export default function HomePage() {
       <SelectedWork /> */}
 
       <Testimonials />
+
+      <FAQ />
     </div>
   );
 }
