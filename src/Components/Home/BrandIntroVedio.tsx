@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import BrandIntro from "../../assets/brandIntro.mp4";
 
 const videoSrc = BrandIntro;
-// "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4";
 
 const BrandIntroVedio: React.FC = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -15,9 +14,10 @@ const BrandIntroVedio: React.FC = () => {
       const rect = sectionRef.current.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      // ক্যালকুলেশন: সেকশনটি যখন ভিউপোর্টে আসবে তখন থেকে টপে যাওয়া পর্যন্ত
-      const start = viewportHeight; // স্ক্রিনের নিচে থাকাকালীন
-      const end = 0; // স্ক্রিনের একদম টপে পৌঁছালে
+      // ভিডিওটি যখন স্ক্রিনের মাঝখানে থাকবে তখন থেকে ক্যালকুলেশন শুরু হবে
+      // এটি স্ক্রলিং ইফেক্টকে আরও ন্যাচারাল করে
+      const start = viewportHeight;
+      const end = -rect.height;
 
       let progress = (start - rect.top) / (start - end);
       progress = Math.max(0, Math.min(1, progress));
@@ -25,32 +25,40 @@ const BrandIntroVedio: React.FC = () => {
       setScrollProgress(progress);
     };
 
+    // 'passive: true' পারফরম্যান্স ভালো রাখে
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // আধুনিক ইজিং (Easing) ফাংশন: এটি মুভমেন্টকে আরও প্রিমিয়াম করে
-  const easedProgress = 1 - Math.pow(1 - scrollProgress, 2.5);
+  /**
+   * আধুনিক ইজিং টুইস্ট:
+   * আমি এখানে 'cubic-bezier' এর মতো একটি লজিক ব্যবহার করেছি।
+   * এটি ভিডিওটিকে শুরুতে ধীরে, মাঝখানে দ্রুত এবং শেষে আবার খুব স্মুথলি বড় হতে সাহায্য করবে।
+   */
+  const easedProgress =
+    scrollProgress < 0.5
+      ? 4 * scrollProgress * scrollProgress * scrollProgress
+      : 1 - Math.pow(-2 * scrollProgress + 2, 3) / 2;
 
-  // ডাইনামিক ভ্যালুসমূহ
-  const scale = 0.8 + easedProgress * 0.2; // ০.৮ থেকে ১.০ পর্যন্ত স্কেল
-  const width = 80 + easedProgress * 20; // ৮০% থেকে ১০০% পর্যন্ত উইডথ
-  const borderRadius = window.innerWidth < 768 ? 0 : (1 - easedProgress) * 60; // ৩.৫রেম থেকে ০ পর্যন্ত
+  // আপনার ফিক্সড ডাইনামিক ভ্যালুসমূহ
+  const scale = 0.8 + easedProgress * 0.2;
+  const width = 80 + easedProgress * 20;
+  const borderRadius = window.innerWidth < 768 ? 0 : (1 - easedProgress) * 60;
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full min-h-[70vh] md:min-h-screen flex items-center justify-center bg-white overflow-hidden"
+      className="relative w-full min-h-[70vh] lg:min-h-screen flex items-center justify-center bg-white overflow-hidden"
     >
       <div
-        className="relative will-change-transform transition-all duration-150 ease-out"
+        // duration এবং ease-out টাইম বাড়ানো হয়েছে আরও মাখন স্মুথ ফিলের জন্য
+        className="relative will-change-transform transition-all duration-500 ease-out"
         style={{
           width: window.innerWidth < 768 ? "100%" : `${width}%`,
           transform: window.innerWidth < 768 ? "none" : `scale(${scale})`,
         }}
       >
-        {/* ভিডিও কন্টেইনার */}
         <div
           className="relative aspect-[9/16] md:aspect-video overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.25)] transition-all duration-300"
           style={{
@@ -58,7 +66,7 @@ const BrandIntroVedio: React.FC = () => {
           }}
         >
           <video
-            className="w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-[3000ms]"
+            className="w-full h-full object-cover scale-110"
             autoPlay
             muted
             loop
@@ -67,7 +75,6 @@ const BrandIntroVedio: React.FC = () => {
             <source src={videoSrc} type="video/mp4" />
           </video>
 
-          {/* গ্রেডিয়েন্ট এবং ওভারলে */}
           <div className="absolute inset-0 bg-black/10"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
         </div>
