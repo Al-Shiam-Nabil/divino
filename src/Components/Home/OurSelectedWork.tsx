@@ -148,13 +148,13 @@ const ProductCard = ({ product }: { product: Product }) => {
           ))}
         </div>
 
-        <p className="text-lg md:text-[1.15rem] text-zinc-500 font-medium leading-relaxed max-w-[92%]">
+        <p className=" md:text-[1.15rem] text-zinc-500 font-medium leading-relaxed max-w-[92%]">
           {product.description}
         </p>
 
         {/* Premium Button: Static Icon with Solid Background Fill */}
         <button className=" lg:hidden mt-3 flex items-center gap-3 group/link">
-          <span className="text-[16px] md:text-[17px] font-bold text-zinc-900 relative">
+          <span className="text-[16px] md:text-[17px] font-semibold text-zinc-900 relative">
             Explore Now
             <span className="absolute bottom-[-8px] left-0 w-full h-[1.5px] bg-zinc-200 group-hover/link:bg-zinc-900 transition-colors duration-300" />
           </span>
