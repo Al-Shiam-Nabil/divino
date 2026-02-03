@@ -73,7 +73,7 @@ const ServicesSection: React.FC = () => {
   };
 
   return (
-    <section className="w-full my-20 lg:my-40 bg-white">
+    <section className="w-full my-20 lg:my-25 bg-white">
       <Container>
         <div className="w-full mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
           {/* বাম পাশের টেক্সট - Sticky & Modern Button Added */}
