@@ -42,17 +42,16 @@ const FAQ: React.FC = () => {
     <section className="py-20 lg:py-32 bg-white overflow-hidden">
       <Container>
         {/* Header Section */}
-        <div className="mb-16">
+        <div className="mb-16 px-4 md:px-0">
           <h2 className="text-[36px] md:text-[50px] font-bold text-zinc-900 tracking-tight leading-tight max-w-2xl">
             Everything You Need <br />
             <span className="text-zinc-400 font-medium">to Know.</span>
           </h2>
         </div>
 
-        {/* items-start ensures the right side doesn't move when left grows */}
         <div className="flex flex-col lg:flex-row gap-16 items-start justify-between">
           {/* Left Side: Accordion List */}
-          <div className="w-full lg:flex-[0_0_60%] border-t border-zinc-100">
+          <div className="w-full lg:flex-[0_0_60%] border-t border-zinc-100 px-4 md:px-0">
             {faqData.map((item, index) => (
               <div key={index} className="border-b border-zinc-100">
                 <button
@@ -83,7 +82,6 @@ const FAQ: React.FC = () => {
                   </div>
                 </button>
 
-                {/* Smooth Animated Content */}
                 <div
                   className={`grid transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
                     openIndex === index
@@ -101,9 +99,9 @@ const FAQ: React.FC = () => {
             ))}
           </div>
 
-          {/* Right Side: Floating Card */}
-          <div className="w-full lg:flex-[0_0_35%] lg:sticky lg:top-32 transition-none">
-            <div className="relative p-8 md:p-12 rounded-[40px] overflow-hidden text-white shadow-2xl isolate">
+          {/* Right Side: Floating Card - Full width on Mobile */}
+          <div className="w-screen lg:w-auto -mx-4 md:mx-0 lg:flex-[0_0_35%] lg:sticky lg:top-32 transition-none">
+            <div className="relative px-4 py-8 md:p-12 rounded-none md:rounded-[40px] overflow-hidden text-white shadow-2xl isolate min-h-[400px] flex flex-col justify-center">
               {/* --- Infinity Animated Background --- */}
               <div className="absolute inset-0 bg-[#060B12] -z-20" />
               <div className="absolute inset-0 -z-10 opacity-60">
@@ -111,7 +109,7 @@ const FAQ: React.FC = () => {
                 <div className="absolute bottom-[-10%] left-[-10%] w-[70%] h-[70%] bg-[#0B2B4C] blur-[80px] rounded-full animate-blob-slow reverse" />
               </div>
 
-              <div className="relative z-10">
+              <div className="relative z-10 max-w-[90%] mx-auto md:max-w-none">
                 <div className="w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-8 shadow-inner">
                   <MessageCircle className="text-[#D9FF50]" size={32} />
                 </div>
@@ -141,7 +139,6 @@ const FAQ: React.FC = () => {
         </div>
       </Container>
 
-      {/* Animation Styles */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -155,12 +152,8 @@ const FAQ: React.FC = () => {
             50% { transform: translate(20px, -20px) scale(1.1); }
             100% { transform: translate(0, 0) scale(1); }
           }
-          .animate-gradient-move {
-            animation: gradient-move 6s ease infinite;
-          }
-          .animate-blob-slow {
-            animation: blob-slow 10s ease-in-out infinite;
-          }
+          .animate-gradient-move { animation: gradient-move 6s ease infinite; }
+          .animate-blob-slow { animation: blob-slow 10s ease-in-out infinite; }
         `,
         }}
       />
