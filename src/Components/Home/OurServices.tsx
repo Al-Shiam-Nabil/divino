@@ -69,18 +69,18 @@ const OurServices: React.FC = () => {
   return (
     <section
       id="expertise"
-      className="w-full py-12 md:py-20 bg-white overflow-hidden"
+      className="w-full pb-12 md:pb-20 bg-white overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header Section */}
         <div className="mb-10 md:mb-16">
           <div className="flex items-center gap-2 mb-4 md:mb-6">
             <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-            <span className="text-[12px] md:text-[14px] font-bold tracking-widest text-[#5e7ea7]">
+            <span className="text-[12px] md:text-lg font-bold tracking-widest text-[#5e7ea7]">
               Services
             </span>
           </div>
-          <p className="text-[24px] sm:text-[28px] md:text-[38px] font-medium leading-[1.2] text-[#111111] tracking-tight max-w-4xl">
+          <p className="text-[24px] sm:text-[28px] md:text-[38px] font-medium leading-[1.2] text-[#111111] tracking-tight w-full">
             We build transformative digital experiences for the world's leading
             brands by blending design, content, and technology.
           </p>
@@ -91,7 +91,7 @@ const OurServices: React.FC = () => {
           {servicesData.map((service) => (
             <div
               key={service.id}
-              className={`${service.gridClass} group relative overflow-hidden rounded-2xl md:rounded-[2.5rem] bg-zinc-100 border border-black/[0.05] transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]`}
+              className={`${service.gridClass} group relative overflow-hidden rounded-2xl bg-zinc-100 border border-black/[0.05] transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.15)]`}
             >
               {/* Background Image */}
               <div className="absolute inset-0 z-0">
@@ -126,7 +126,7 @@ const OurServices: React.FC = () => {
                     {service.features.map((f, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] md:text-[11px] font-bold border border-white/10"
+                        className="px-3 py-1 md:px-4 md:py-1.5 rounded-full bg-white/20 backdrop-blur-md text-white text-[10px] md:text-[12px] lg:text-sm font-bold border border-white/10"
                       >
                         {f}
                       </span>
