@@ -617,7 +617,10 @@ const Navbar: React.FC = () => {
             <img src={Logo} alt="Logo" className="w-40  object-contain" />
 
             <button
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                setOpenDropdown(null);
+              }}
               className="w-10 h-10 flex items-center justify-center bg-slate-50 text-slate-900 rounded-full active:scale-90 transition-all border border-slate-100"
             >
               <X size={24} />
