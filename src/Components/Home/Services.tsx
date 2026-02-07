@@ -148,8 +148,8 @@ const Services: React.FC = () => {
       id="expertise"
       className="w-full pb-12 md:pb-20 bg-white overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        <div className="w-full mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 items-start mb-25">
+      <div className="max-w-7xl mx-auto ">
+        <div className="w-full mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-12 lg:gap-24 items-start mb-25">
           <div className="lg:w-1/2  space-y-10">
             <div>
               <div className="flex items-center gap-2 mb-6">
@@ -228,11 +228,11 @@ const Services: React.FC = () => {
         </div>
 
         {/* --- Bento Grid Updated Section --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 lg:auto-rows-[400px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10  md:px-6 lg:auto-rows-[400px]">
           {servicesDataForCard.map((service) => (
             <div
               key={service.id}
-              className={`${service.gridClass} group relative overflow-hidden rounded-3xl bg-zinc-100 border border-black/[0.05] transition-all duration-700 min-h-[550px] lg:min-h-0`}
+              className={`${service.gridClass} group relative overflow-hidden md:rounded-3xl bg-zinc-100 border border-black/[0.05] transition-all duration-700 min-h-[550px] lg:min-h-0`}
             >
               {/* Background Image - Full Clear */}
               <div className="absolute inset-0 z-0">
@@ -244,7 +244,7 @@ const Services: React.FC = () => {
               </div>
 
               {/* Content Container - Dark Text & Items at the Top */}
-              <div className="relative z-10 h-full p-8 md:p-10 flex flex-col justify-start">
+              <div className="relative z-10 h-full py-8 px-4 sm:px-6 lg:px-8 xl:px-0 flex flex-col justify-start">
                 {/* TOP SECTION: Title and Icon */}
                 <div className="flex justify-between items-start gap-4">
                   <div className="space-y-2">
