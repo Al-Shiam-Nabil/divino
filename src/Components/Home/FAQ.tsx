@@ -1,3 +1,4 @@
+import { AnimatePresence, motion } from "framer-motion"; // Motion ইমপোর্ট করা হয়েছে
 import { ArrowRight, MessageCircle, Minus, Plus } from "lucide-react";
 import React, { useState } from "react";
 import Container from "../UI/Container";
@@ -41,19 +42,30 @@ const FAQ: React.FC = () => {
   return (
     <section className="py-20 lg:py-32 bg-white overflow-hidden">
       <Container>
-        {/* Header Section */}
-        <div className="mb-16 ">
+        {/* Header Section - স্ক্রল অ্যানিমেশন */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.5 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="mb-16 "
+        >
           <h2 className="text-[36px] md:text-[50px] font-bold text-zinc-900 tracking-tight leading-tight max-w-2xl">
             Everything You Need <br />
             <span className="text-zinc-400 font-medium">to Know.</span>
           </h2>
-        </div>
+        </motion.div>
       </Container>
 
-      <div className="flex flex-col lg:flex-row gap-16 items-start justify-between max-w-7xl mx-auto  lg:px-8 xl:px-0">
+      <div className="flex flex-col lg:flex-row gap-16 items-start justify-between max-w-7xl mx-auto lg:px-8 xl:px-0">
         {/* Left Side: Accordion List */}
-
-        <div className="w-full px-4 sm:px-6 lg:px-0  lg:flex-[0_0_60%] border-t border-zinc-100 ">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="w-full px-4 sm:px-6 lg:px-0 lg:flex-[0_0_60%] border-t border-zinc-100"
+        >
           {faqData.map((item, index) => (
             <div key={index} className="border-b border-zinc-100">
               <button
@@ -61,9 +73,9 @@ const FAQ: React.FC = () => {
                 className="w-full py-7 flex items-center justify-between text-left group transition-all"
               >
                 <span
-                  className={`text-lg md:text-xl font-semibold tracking-tight transition-colors duration-500 ${
+                  className={`text-lg md:text-xl font-semibold tracking-tight transition-all duration-500 ${
                     openIndex === index
-                      ? "text-zinc-900"
+                      ? "text-zinc-900 translate-x-1"
                       : "text-zinc-500 group-hover:text-zinc-800"
                   }`}
                 >
@@ -73,7 +85,7 @@ const FAQ: React.FC = () => {
                   className={`shrink-0 ml-4 p-1 rounded-full transition-all duration-500 ${
                     openIndex === index
                       ? "rotate-180 bg-zinc-900 text-white"
-                      : "text-zinc-400 group-hover:text-zinc-900"
+                      : "text-zinc-400 group-hover:text-zinc-900 bg-zinc-50"
                   }`}
                 >
                   {openIndex === index ? (
@@ -84,26 +96,37 @@ const FAQ: React.FC = () => {
                 </div>
               </button>
 
-              <div
-                className={`grid transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                  openIndex === index
-                    ? "grid-rows-[1fr] opacity-100 pb-8"
-                    : "grid-rows-[0fr] opacity-0"
-                }`}
-              >
-                <div className="overflow-hidden">
-                  <p className="text-zinc-500 text-lg leading-relaxed max-w-[95%]">
-                    {item.answer}
-                  </p>
-                </div>
-              </div>
+              {/* স্মুথ একর্ডিয়ন অ্যানিমেশন */}
+              <AnimatePresence initial={false}>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+                    className="overflow-hidden"
+                  >
+                    <div className="pb-8">
+                      <p className="text-zinc-500 text-lg leading-relaxed max-w-[95%]">
+                        {item.answer}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Right Side: Floating Card - Full width on Mobile */}
-        <div className="w-full  lg:w-auto lg:flex-[0_0_35%] lg:sticky lg:top-32 transition-none">
-          <div className="relative px-4 py-8 md:p-12  rounded-none lg:rounded-[40px] overflow-hidden text-white shadow-2xl isolate min-h-[400px] flex flex-col justify-center">
+        {/* Right Side: Floating Card */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95, x: 30 }}
+          whileInView={{ opacity: 1, scale: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="w-full lg:w-auto lg:flex-[0_0_35%] lg:sticky lg:top-32"
+        >
+          <div className="relative px-4 py-8 md:p-12 rounded-none lg:rounded-[40px] overflow-hidden text-white shadow-2xl isolate min-h-[400px] flex flex-col justify-center">
             <div className="absolute inset-0 bg-[#060B12] -z-20" />
             <div className="absolute inset-0 -z-10 opacity-60">
               <div className="absolute top-[-20%] right-[-20%] w-[80%] h-[80%] bg-[#1E3A8A] blur-[100px] rounded-full animate-blob-slow" />
@@ -111,9 +134,12 @@ const FAQ: React.FC = () => {
             </div>
 
             <div className="relative z-10 max-w-[90%] mx-auto md:max-w-none">
-              <div className="w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-8 shadow-inner">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-8 shadow-inner"
+              >
                 <MessageCircle className="text-[#D9FF50]" size={32} />
-              </div>
+              </motion.div>
 
               <h3 className="text-3xl font-bold mb-5 leading-[1.2]">
                 Still have a <br /> specific question?
@@ -124,18 +150,18 @@ const FAQ: React.FC = () => {
               </p>
 
               <div className="w-full">
-                <button className="group cursor-pointer relative w-full h-[52px] md:h-[64px] flex items-center justify-center gap-2 overflow-hidden text-white rounded-full font-bold text-[16px] md:text-[18px] transition-all active:scale-[0.95] shadow-xl">
+                <button className="group cursor-pointer relative w-full h-[52px] md:h-[64px] flex items-center justify-center gap-2 overflow-hidden text-white rounded-full font-bold text-[16px] md:text-[18px] transition-all active:scale-[0.98] shadow-xl">
                   <div className="absolute inset-0 bg-[linear-gradient(45deg,#0A111B,#0B2B4C,#1E3A8A,#0A111B)] bg-[length:300%_300%] animate-gradient-move"></div>
                   <span className="relative z-10">Chat with a Human</span>
                   <ArrowRight
                     size={22}
-                    className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+                    className="relative z-10 transition-transform duration-300 group-hover:translate-x-2"
                   />
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style
