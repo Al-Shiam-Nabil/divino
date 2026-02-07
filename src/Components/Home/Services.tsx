@@ -34,7 +34,8 @@ const servicesDataForCard: ServiceItemCard[] = [
   {
     id: 1,
     title: "Graphic & visual design",
-    description: "We create strong visual systems...",
+    description:
+      "We create strong visual systems and brand identities that communicate your message clearly and consistently across all platforms.",
     features: ["Brand identity", "Marketing visuals", "Print assets"],
     image:
       "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497485_Brand-Design-%26-Strategy.avif",
@@ -44,7 +45,8 @@ const servicesDataForCard: ServiceItemCard[] = [
   {
     id: 2,
     title: "Digital & web design support",
-    description: "Functional, clean experiences.",
+    description:
+      "Our team designs functional and user-centric digital experiences that prioritize usability while maintaining a premium, modern aesthetic.",
     features: ["UI/UX design", "Landing pages"],
     image:
       "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497487_Website-Design-%26-Development.avif",
@@ -54,7 +56,8 @@ const servicesDataForCard: ServiceItemCard[] = [
   {
     id: 3,
     title: "Marketing & content",
-    description: "Helping brands communicate.",
+    description:
+      "We help brands grow by producing high-impact visual stories and strategic content plans that drive real audience engagement.",
     features: ["Campaigns", "Content planning"],
     image:
       "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b4974e5_mobile-app-design.avif",
@@ -64,7 +67,8 @@ const servicesDataForCard: ServiceItemCard[] = [
   {
     id: 4,
     title: "SEO & visibility",
-    description: "Technical digital visibility.",
+    description:
+      "Technical support to enhance your digital visibility, ensuring your website ranks higher and reaches the right target audience effectively.",
     features: ["Optimizations", "On-page support"],
     image:
       "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497483_SaaS-Product-Design.avif",
@@ -74,7 +78,8 @@ const servicesDataForCard: ServiceItemCard[] = [
   {
     id: 5,
     title: "Asset production",
-    description: "Asset management.",
+    description:
+      "Professional management and production of digital assets, including motion graphics and video content ready for web and marketing use.",
     features: ["Video motion", "Asset preparation"],
     image:
       "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497482_MVP-Development.avif",
@@ -258,7 +263,7 @@ const Services: React.FC = () => {
         </div>
 
         {/* Bento Grid Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:px-6 lg:auto-rows-[400px]">
+        {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:px-6 lg:auto-rows-[400px]">
           {servicesDataForCard.map((service, i) => (
             <motion.div
               key={service.id}
@@ -292,6 +297,84 @@ const Services: React.FC = () => {
                     <ArrowUpRight size={24} />
                   </div>
                 </div>
+              </div>
+            </motion.div>
+          ))}
+        </div> */}
+
+        {/* Bento Grid Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:px-6 lg:auto-rows-[400px]">
+          {servicesDataForCard.map((service, i) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false, amount: 0.1 }}
+              transition={{
+                duration: 0.8,
+                delay: i * 0.05,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className={`${service.gridClass} group relative flex flex-col lg:block overflow-hidden md:rounded-3xl bg-white lg:bg-zinc-100  min-h-[500px] lg:min-h-0`}
+            >
+              {/* Image Container - মোবাইলে flex-grow করবে, লার্জে absolute থাকবে */}
+              <div className="relative flex-grow lg:absolute lg:inset-0 lg:z-0 overflow-hidden md:rounded-3xl ">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out scale-100 group-hover:scale-105"
+                />
+
+                {/* Desktop View Overlay Content (Ager Design) */}
+                <div className="hidden md:flex absolute inset-0 z-10 py-8 px-8 flex-col justify-start">
+                  <div className="flex justify-between items-start gap-4">
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tighter capitalize text-[#111111]">
+                      {service.title}
+                    </h3>
+                    <div className="w-12 h-12 rounded-full bg-black/10 backdrop-blur-xl border border-black/10 flex items-center justify-center text-[#111111] transition-all duration-500 group-hover:bg-black group-hover:text-white shrink-0">
+                      <ArrowUpRight size={24} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mobile/Single Column View Content (আপনার দেওয়া নতুন ডিজাইন) */}
+              <div className="md:hidden mt-8 px-6 md:px-2 flex flex-col items-start gap-4 pb-6">
+                <div className="space-y-1.5">
+                  <h3 className="text-2xl md:text-[2rem] font-bold tracking-tight text-zinc-900 leading-tight">
+                    {service.title}
+                  </h3>
+                </div>
+
+                {/* Dynamic Tags from features */}
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-1">
+                  {service.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-2">
+                      <span className="text-[14px] md:text-[15px] font-semibold text-[#5e7ea7] transition-colors duration-300 hover:text-zinc-900 capitalize cursor-default">
+                        {feature}
+                      </span>
+                      {idx < service.features.length - 1 && (
+                        <span className="w-1 h-1 rounded-full bg-zinc-200"></span>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Dynamic Description */}
+                <p className="md:text-[1.15rem] text-zinc-500 font-medium leading-relaxed max-w-[92%]">
+                  {service.description}
+                </p>
+
+                {/* Explore Now Button */}
+                <button className="mt-3 flex items-center gap-3 group/link">
+                  <span className="text-[16px] md:text-[17px] font-semibold text-zinc-900 relative">
+                    Explore Now
+                    <span className="absolute bottom-[-8px] left-0 w-full h-[1.5px] bg-zinc-200 group-hover/link:bg-zinc-900 transition-colors duration-300"></span>
+                  </span>
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full bg-zinc-50 text-zinc-900 border border-zinc-100 group-hover/link:bg-zinc-900 group-hover/link:text-white transition-all duration-300">
+                    <ArrowUpRight size={18} />
+                  </div>
+                </button>
               </div>
             </motion.div>
           ))}
