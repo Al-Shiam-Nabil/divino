@@ -80,7 +80,7 @@ const Testimonials: React.FC<TestimonialProps> = ({
       <Container>
         {/* Header Section */}
         <div className="mb-8 md:mb-12 lg:mb-18 text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-[45px] font-bold text-zinc-900 tracking-tight leading-tight">
+          <h2 className="text-3xl lg:text-[45px] font-bold text-zinc-900 tracking-tight leading-tight">
             Relationships Built on Results.
           </h2>
         </div>
@@ -131,7 +131,7 @@ const Testimonials: React.FC<TestimonialProps> = ({
 
                   <div className="pt-4 ">
                     {/* Silk Mesh Badge */}
-                    <div className="relative inline-flex items-center gap-3 md:gap-4 px-6 md:px-9 py-3 md:py-4 overflow-hidden rounded-full group cursor-default shadow-[0_15px_35px_rgba(94,126,167,0.15)] border border-white isolate">
+                    <div className="relative inline-flex items-center gap-3 md:gap-4 px-6 md:px-9 py-3 md:py-4 overflow-hidden rounded-full group cursor-default shadow-[0_15px_35px_rgba(94,126,167,0.15)]  isolate">
                       <div className="absolute inset-0 bg-gradient-to-br from-[#f8fafc] via-[#eff6ff] to-[#f5f3ff] -z-20" />
                       <div className="absolute inset-0 -z-10 opacity-40 mix-blend-multiply pointer-events-none">
                         <div className="absolute top-[-20%] left-[-10%] w-[120%] h-[150%] bg-[radial-gradient(circle_at_center,#60a5fa,#c084fc,#f472b6)] animate-[pulse_6s_ease-in-out_infinite] blur-[45px] opacity-50" />
@@ -156,7 +156,7 @@ const Testimonials: React.FC<TestimonialProps> = ({
               <img
                 src={current.avatar}
                 alt={current.clientName}
-                className="w-10 h-10 md:w-14 md:h-14 rounded-full grayscale border border-zinc-100 p-0.5"
+                className="w-14 h-14  rounded-full grayscale border border-zinc-100 p-0.5"
               />
               <div>
                 <h4 className="text-zinc-900 font-medium text-base md:text-lg leading-none mb-1">
