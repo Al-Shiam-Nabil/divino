@@ -228,11 +228,11 @@ const Services: React.FC = () => {
         </div>
 
         {/* --- Bento Grid Updated Section --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10  md:px-6 lg:auto-rows-[400px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10  md:px-6 lg:auto-rows-[400px]">
           {servicesDataForCard.map((service) => (
             <div
               key={service.id}
-              className={`${service.gridClass} group relative overflow-hidden md:rounded-3xl bg-zinc-100 border border-black/[0.05] transition-all duration-700 min-h-[550px] lg:min-h-0`}
+              className={`${service.gridClass} group relative overflow-hidden md:rounded-3xl bg-zinc-100 border border-black/[0.05] transition-all duration-700 min-h-[600px] lg:min-h-0`}
             >
               {/* Background Image - Full Clear */}
               <div className="absolute inset-0 z-0">
@@ -244,7 +244,7 @@ const Services: React.FC = () => {
               </div>
 
               {/* Content Container - Dark Text & Items at the Top */}
-              <div className="relative z-10 h-full py-8 px-4 sm:px-6 lg:px-8 xl:px-0 flex flex-col justify-start">
+              <div className="relative z-10 h-full py-8 px-4 sm:px-6 lg:px-8  flex flex-col justify-start">
                 {/* TOP SECTION: Title and Icon */}
                 <div className="flex justify-between items-start gap-4">
                   <div className="space-y-2">
