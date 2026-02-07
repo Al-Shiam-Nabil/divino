@@ -1,183 +1,284 @@
 import {
-  ArrowRight,
-  Database,
+  ArrowUpRight,
+  ChevronDown,
+  Cpu,
   Globe,
-  Layout,
-  PenTool,
-  Smartphone,
+  Palette,
+  Shield,
   Zap,
 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+
+interface ServiceItemCard {
+  id: number;
+  title: string;
+  description: string;
+  features: string[];
+  image: string;
+  gridClass: string;
+  icon: React.ReactNode;
+}
+
+const servicesDataForCard: ServiceItemCard[] = [
+  {
+    id: 1,
+    title: "Graphic & visual design",
+    description:
+      "We create strong visual systems that communicate clearly and consistently.",
+    features: ["Brand identity", "Marketing visuals", "Print assets"],
+    image:
+      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497485_Brand-Design-%26-Strategy.avif",
+    gridClass: "lg:col-span-8 lg:row-span-2",
+    icon: <Palette size={24} />,
+  },
+  {
+    id: 2,
+    title: "Digital & web design support",
+    description: "Functional, clean, and user-focused digital experiences.",
+    features: ["UI/UX design", "Landing pages"],
+    image:
+      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497487_Website-Design-%26-Development.avif",
+    gridClass: "lg:col-span-4 lg:row-span-1",
+    icon: <Cpu size={24} />,
+  },
+  {
+    id: 3,
+    title: "Marketing & content",
+    description: "Helping brands communicate through meaningful content.",
+    features: ["Campaigns", "Content planning"],
+    image:
+      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b4974e5_mobile-app-design.avif",
+    gridClass: "lg:col-span-4 lg:row-span-1",
+    icon: <Globe size={24} />,
+  },
+  {
+    id: 4,
+    title: "SEO & visibility",
+    description: "Technical and content side of digital visibility.",
+    features: ["Optimizations", "On-page support"],
+    image:
+      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497483_SaaS-Product-Design.avif",
+    gridClass: "lg:col-span-6 lg:row-span-1",
+    icon: <Zap size={24} />,
+  },
+  {
+    id: 5,
+    title: "Asset production",
+    description: "Image, video, and digital asset management.",
+    features: ["Video motion", "Asset preparation"],
+    image:
+      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497482_MVP-Development.avif",
+    gridClass: "lg:col-span-6 lg:row-span-1",
+    icon: <Shield size={24} />,
+  },
+];
 
 interface ServiceItem {
   id: number;
   title: string;
-  hoverDescription: string;
-  btnText: string;
-  image: string;
-  icon: React.ReactNode;
-  accent: string;
+  description: string;
+  features: string[];
 }
 
 const servicesData: ServiceItem[] = [
   {
     id: 1,
-    title: "UI/UX Design",
-    hoverDescription:
-      "Building trust through exceptional user journeys and unforgettable interfaces.",
-    btnText: "Explore Design",
-    image:
-      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497484_UI%26UX-Design-%26-Consultation.avif",
-    icon: <Layout size={16} />,
-    accent: "#3B82F6",
+    title: "Graphic & Visual Design",
+    description:
+      "We create strong visual systems that communicate clearly and consistently.",
+    features: [
+      "Brand identity & visual guidelines",
+      "Marketing visuals & social media design",
+      "Print & digital design assets",
+    ],
   },
   {
     id: 2,
-    title: "Brand Design",
-    hoverDescription:
-      "Crafting unique identities that resonate deeply with your target audience.",
-    btnText: "Shape Brand",
-    image:
-      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497485_Brand-Design-%26-Strategy.avif",
-    icon: <PenTool size={16} />,
-    accent: "#A855F7",
+    title: "Digital & Web Design Support",
+    description:
+      "We design and support digital experiences that are functional, clean, and user-focused.",
+    features: [
+      "Website UI/UX design support",
+      "Landing pages & web visuals",
+      "Ongoing design and content support",
+    ],
   },
   {
     id: 3,
-    title: "Web Development",
-    hoverDescription:
-      "High-performance web solutions built with precision and modern tech stacks.",
-    btnText: "View Solutions",
-    image:
-      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497487_Website-Design-%26-Development.avif",
-    icon: <Globe size={16} />,
-    accent: "#10B981",
+    title: "Marketing & Content Production Support",
+    description:
+      "We help brands communicate better through meaningful content.",
+    features: [
+      "Marketing visuals and creatives",
+      "Content planning & production support",
+      "Digital campaign support",
+    ],
   },
   {
     id: 4,
-    title: "SaaS Product",
-    hoverDescription:
-      "Scaling your business with dedicated SaaS UX and architecture experts.",
-    btnText: "Start Scaling",
-    image:
-      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497483_SaaS-Product-Design.avif",
-    icon: <Database size={16} />,
-    accent: "#F97316",
+    title: "SEO & Website Visibility Support",
+    description: "We support the technical and content side of visibility.",
+    features: [
+      "SEO-related tasks and optimizations",
+      "Content structure & on-page support",
+      "Website performance & visibility assistance",
+    ],
   },
   {
     id: 5,
-    title: "MVP Launch",
-    hoverDescription:
-      "Test core ideas quickly and iterate based on real-world user feedback.",
-    btnText: "Launch Now",
-    image:
-      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497482_MVP-Development.avif",
-    icon: <Zap size={16} />,
-    accent: "#EAB308",
-  },
-  {
-    id: 6,
-    title: "Mobile App",
-    hoverDescription:
-      "Cross-platform mobile apps focused on performance and intuitive flow.",
-    btnText: "Build App",
-    image:
-      "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b4974e5_mobile-app-design.avif",
-    icon: <Smartphone size={16} />,
-    accent: "#F43F5E",
+    title: "Image, Video & Digital Asset Production",
+    description: "We produce and manage visual content for digital platforms.",
+    features: [
+      "Image creation & editing",
+      "Video and motion content support",
+      "Digital asset preparation for web & marketing",
+    ],
   },
 ];
 
 const Services: React.FC = () => {
+  const [openId, setOpenId] = useState<number | null>(null);
+
+  const toggleAccordion = (id: number) => {
+    setOpenId(openId === id ? null : id);
+  };
+
   return (
-    <section className="py-24 bg-[#FAFAFA] text-[#111111]">
-      <div className="max-w-7xl mx-auto px-0 md:px-6">
-        {/* Header Section */}
-        <div className="flex flex-col items-center mb-16 gap-8 px-6 md:px-0">
-          <div className="space-y-4 text-center">
-            <h2 className="text-5xl font-bold tracking-tighter leading-none">
-              Our Services
-            </h2>
-            <p className="text-zinc-500 max-w-xl text-lg xl:text-xl">
-              We build transformative digital experiences for the world's
-              leading brands by blending design, content, and technology.
-            </p>
-          </div>
-          <div className="w-full max-w-[200px] md:max-w-[230px]">
-            <button className="group cursor-pointer relative w-full h-[52px] md:h-[64px] flex items-center justify-center gap-2 overflow-hidden text-white rounded-full font-bold text-[16px] md:text-[18px] transition-all active:scale-[0.98] shadow-lg">
-              <div className="absolute inset-0 bg-[linear-gradient(45deg,#0A111B,#0B2B4C,#1E3A8A,#0A111B)] bg-[length:300%_300%] animate-gradient-move"></div>
-              <span className="relative z-10">Work With Us</span>
-              <ArrowRight
-                size={22}
-                className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
-              />
+    <section
+      id="expertise"
+      className="w-full pb-12 md:pb-20 bg-white overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="w-full mx-auto flex flex-col lg:flex-row gap-12 lg:gap-24 items-start mb-25">
+          <div className="lg:w-1/2  space-y-10">
+            <div>
+              <div className="flex items-center gap-2 mb-6">
+                <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+                <span className="text-[14px] font-bold uppercase tracking-widest text-[#5e7ea7]">
+                  Services
+                </span>
+              </div>
+              <p className="text-[26px] md:text-[38px] font-medium leading-[1.2] text-[#111111] tracking-tight">
+                We build transformative digital experiences for the world's
+                leading brands by blending design, content, and technology.
+              </p>
+            </div>
+
+            <button className="group relative overflow-hidden px-10 py-4 bg-black text-white rounded-full transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/30 active:scale-95 cursor-pointer isolate">
+              <div className="absolute inset-0 z-0 bg-[length:300%_300%] animate-[liquid-flow_6s_ease-in-out_infinite] bg-gradient-to-br from-[#050a14] via-[#0B2B4C] via-[#1e3a8a] to-[#050a14]"></div>
+              <div className="absolute inset-0 z-10 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)"></div>
+              <div className="relative z-20 flex items-center gap-1">
+                <span className="text-base font-semibold">Work with Us</span>
+                <div className="relative w-5 h-5 overflow-hidden">
+                  <div className="relative w-full h-full flex flex-col transition-all group-hover:[animation:icon-loop_0.5s_linear_infinite]">
+                    <div className="absolute inset-0 flex items-center justify-center shrink-0">
+                      <ArrowUpRight size={20} strokeWidth={2.5} />
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center shrink-0 translate-y-full -translate-x-full">
+                      <ArrowUpRight size={20} strokeWidth={2.5} />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </button>
+          </div>
+
+          <div className="lg:w-1/2 flex flex-col w-full">
+            {servicesData.map((service) => (
+              <div key={service.id} className="border-b border-gray-100">
+                <button
+                  onClick={() => toggleAccordion(service.id)}
+                  className="w-full flex items-center justify-between py-8 md:py-10 text-left group hover:opacity-60 transition-all cursor-pointer"
+                >
+                  <span className="text-[24px] md:text-[32px] font-bold text-[#111111] tracking-tight">
+                    {service.title}
+                  </span>
+                  <ChevronDown
+                    className={`w-6 h-6 md:w-8 md:h-8 text-gray-400 transition-transform duration-500 ${
+                      openId === service.id ? "rotate-180 text-zinc-900" : ""
+                    }`}
+                  />
+                </button>
+
+                <div
+                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                    openId === service.id
+                      ? "max-h-[600px] pb-12 opacity-100"
+                      : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <p className="text-[18px] md:text-[20px] text-gray-600 mb-8 leading-relaxed max-w-[90%]">
+                    {service.description}
+                  </p>
+                  <ul className="space-y-4">
+                    {service.features.map((feature, index) => (
+                      <li
+                        key={index}
+                        className="flex items-center text-[16px] md:text-[18px] text-gray-600"
+                      >
+                        <span className="w-1.5 h-1.5 bg-gray-300 rounded-full mr-4 shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Dynamic Card Grid - Added gap-12 for Mobile */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 md:gap-8">
-          {servicesData.map((service) => (
+        {/* --- Bento Grid Updated Section --- */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 lg:auto-rows-[400px]">
+          {servicesDataForCard.map((service) => (
             <div
               key={service.id}
-              className="group relative h-[600px] md:h-[550px] rounded-none md:rounded-[2.5rem] bg-white border-y md:border border-zinc-200 overflow-hidden transition-all duration-700 hover:shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)]"
+              className={`${service.gridClass} group relative overflow-hidden rounded-3xl bg-zinc-100 border border-black/[0.05] transition-all duration-700 min-h-[550px] lg:min-h-0`}
             >
-              {/* Image Layer */}
+              {/* Background Image - Full Clear */}
               <div className="absolute inset-0 z-0">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 scale-100 group-hover:scale-110 transition-all duration-[1.5s] ease-out"
+                  className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out scale-100 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
               </div>
 
-              {/* Modern Top Button/Label (Replaced the Icon) */}
-              <div className="absolute top-8 left-8 z-20">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full backdrop-blur-xl border border-white/20 bg-white/10 text-white text-[10px] font-bold uppercase tracking-[2px] transition-all duration-500 group-hover:bg-white group-hover:text-black group-hover:border-white">
-                  <span
-                    className="w-1.5 h-1.5 rounded-full"
-                    style={{ backgroundColor: service.accent }}
-                  ></span>
-                  {service.title.split(" ")[0]}
-                </div>
-              </div>
+              {/* Content Container - Dark Text & Items at the Top */}
+              <div className="relative z-10 h-full p-8 md:p-10 flex flex-col justify-start">
+                {/* TOP SECTION: Title and Icon */}
+                <div className="flex justify-between items-start gap-4">
+                  <div className="space-y-2">
+                    <h3 className="text-2xl md:text-3xl font-bold tracking-tighter capitalize text-[#111111]">
+                      {service.title}
+                    </h3>
+                  </div>
 
-              {/* Content Layer */}
-              <div className="relative z-10 h-full p-8 md:p-10 flex flex-col justify-end">
-                <div className="relative">
-                  {/* Title */}
-                  <h3 className="text-4xl font-bold text-white tracking-tight mb-4 transition-transform duration-500 group-hover:-translate-y-2">
-                    {service.title}
-                  </h3>
-
-                  {/* Slide-up Content */}
-                  <div className="max-h-0 group-hover:max-h-[250px] opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out">
-                    <p className="text-zinc-300 text-lg mb-8 leading-relaxed">
-                      {service.hoverDescription}
-                    </p>
-
-                    <button className="flex items-center gap-3 text-white font-bold group/btn">
-                      <span className="uppercase tracking-widest text-[11px] border-b border-white/30 group-hover/btn:border-white transition-all pb-1">
-                        {service.btnText}
-                      </span>
-                      <div className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center group-hover/btn:scale-110 transition-all">
-                        <ArrowRight size={18} />
-                      </div>
-                    </button>
+                  {/* Dark Water Effect Icon Background */}
+                  <div className="w-12 h-12 rounded-full bg-black/10 backdrop-blur-xl border border-black/10 flex items-center justify-center text-[#111111] transition-all duration-500 group-hover:bg-black group-hover:text-white shrink-0">
+                    <ArrowUpRight size={24} />
                   </div>
                 </div>
               </div>
-
-              {/* Progress Line */}
-              <div
-                className="absolute bottom-0 left-0 h-1.5 w-0 group-hover:w-full transition-all duration-1000 ease-out z-20"
-                style={{ backgroundColor: service.accent }}
-              ></div>
             </div>
           ))}
         </div>
       </div>
+
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+          @keyframes liquid-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          @keyframes icon-loop {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100%, -100%); }
+          }
+        `,
+        }}
+      />
     </section>
   );
 };

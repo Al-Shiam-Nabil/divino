@@ -4,7 +4,7 @@ import FAQ from "../../Components/Home/FAQ";
 import FinalHandshake from "../../Components/Home/FinalHandshake";
 import Hero from "../../Components/Home/Hero";
 import OurSelectedWork from "../../Components/Home/OurSelectedWork";
-import OurServices from "../../Components/Home/OurServices";
+import Services from "../../Components/Home/Services";
 
 import TechStack from "../../Components/Home/TechStack";
 import Testimonials from "../../Components/Home/Testimonials";
@@ -18,8 +18,8 @@ export default function HomePage() {
       <BrandIntroVedio />
       <TechStack />
       {/* <ServicesSection /> */}
-      <OurServices />
-      {/* <Services /> */}
+      {/* <OurServices /> */}
+      <Services />
 
       <ClientSection />
       <OurSelectedWork />
