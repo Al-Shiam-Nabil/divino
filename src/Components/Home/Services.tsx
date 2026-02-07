@@ -1,3 +1,5 @@
+import type { Variants } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowUpRight,
   ChevronDown,
@@ -9,6 +11,7 @@ import {
 } from "lucide-react";
 import React, { useState } from "react";
 
+// --- Types ---
 interface ServiceItemCard {
   id: number;
   title: string;
@@ -19,12 +22,19 @@ interface ServiceItemCard {
   icon: React.ReactNode;
 }
 
+interface ServiceItem {
+  id: number;
+  title: string;
+  description: string;
+  features: string[];
+}
+
+// --- Data (Same as your code) ---
 const servicesDataForCard: ServiceItemCard[] = [
   {
     id: 1,
     title: "Graphic & visual design",
-    description:
-      "We create strong visual systems that communicate clearly and consistently.",
+    description: "We create strong visual systems...",
     features: ["Brand identity", "Marketing visuals", "Print assets"],
     image:
       "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497485_Brand-Design-%26-Strategy.avif",
@@ -34,7 +44,7 @@ const servicesDataForCard: ServiceItemCard[] = [
   {
     id: 2,
     title: "Digital & web design support",
-    description: "Functional, clean, and user-focused digital experiences.",
+    description: "Functional, clean experiences.",
     features: ["UI/UX design", "Landing pages"],
     image:
       "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497487_Website-Design-%26-Development.avif",
@@ -44,7 +54,7 @@ const servicesDataForCard: ServiceItemCard[] = [
   {
     id: 3,
     title: "Marketing & content",
-    description: "Helping brands communicate through meaningful content.",
+    description: "Helping brands communicate.",
     features: ["Campaigns", "Content planning"],
     image:
       "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b4974e5_mobile-app-design.avif",
@@ -54,7 +64,7 @@ const servicesDataForCard: ServiceItemCard[] = [
   {
     id: 4,
     title: "SEO & visibility",
-    description: "Technical and content side of digital visibility.",
+    description: "Technical digital visibility.",
     features: ["Optimizations", "On-page support"],
     image:
       "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497483_SaaS-Product-Design.avif",
@@ -64,7 +74,7 @@ const servicesDataForCard: ServiceItemCard[] = [
   {
     id: 5,
     title: "Asset production",
-    description: "Image, video, and digital asset management.",
+    description: "Asset management.",
     features: ["Video motion", "Asset preparation"],
     image:
       "https://cdn.prod.website-files.com/697722e913f661fc1b49692f/697722e913f661fc1b497482_MVP-Development.avif",
@@ -72,13 +82,6 @@ const servicesDataForCard: ServiceItemCard[] = [
     icon: <Shield size={24} />,
   },
 ];
-
-interface ServiceItem {
-  id: number;
-  title: string;
-  description: string;
-  features: string[];
-}
 
 const servicesData: ServiceItem[] = [
   {
@@ -143,6 +146,16 @@ const Services: React.FC = () => {
     setOpenId(openId === id ? null : id);
   };
 
+  // Modern Fade Reveal Settings
+  const fadeUpVariant: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
   return (
     <section
       id="expertise"
@@ -150,7 +163,14 @@ const Services: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto ">
         <div className="w-full mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-12 lg:gap-24 items-start mb-25">
-          <div className="lg:w-1/2  space-y-10">
+          {/* Left Content Side */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.3 }}
+            variants={fadeUpVariant}
+            className="lg:w-1/2 space-y-10"
+          >
             <div>
               <div className="flex items-center gap-2 mb-6">
                 <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
@@ -174,18 +194,23 @@ const Services: React.FC = () => {
                     <div className="absolute inset-0 flex items-center justify-center shrink-0">
                       <ArrowUpRight size={20} strokeWidth={2.5} />
                     </div>
-                    <div className="absolute inset-0 flex items-center justify-center shrink-0 translate-y-full -translate-x-full">
-                      <ArrowUpRight size={20} strokeWidth={2.5} />
-                    </div>
                   </div>
                 </div>
               </div>
             </button>
-          </div>
+          </motion.div>
 
+          {/* Right Side - Accordion */}
           <div className="lg:w-1/2 flex flex-col w-full">
-            {servicesData.map((service) => (
-              <div key={service.id} className="border-b border-gray-100">
+            {servicesData.map((service, i) => (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+                className="border-b border-gray-100"
+              >
                 <button
                   onClick={() => toggleAccordion(service.id)}
                   className="w-full flex items-center justify-between py-8 md:py-10 text-left group hover:opacity-60 transition-all cursor-pointer"
@@ -200,41 +225,53 @@ const Services: React.FC = () => {
                   />
                 </button>
 
-                <div
-                  className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.4,0,0.2,1)] ${
-                    openId === service.id
-                      ? "max-h-[600px] pb-12 opacity-100"
-                      : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <p className="text-[18px] md:text-[20px] text-gray-600 mb-8 leading-relaxed max-w-[90%]">
-                    {service.description}
-                  </p>
-                  <ul className="space-y-4">
-                    {service.features.map((feature, index) => (
-                      <li
-                        key={index}
-                        className="flex items-center text-[16px] md:text-[18px] text-gray-600"
-                      >
-                        <span className="w-1.5 h-1.5 bg-gray-300 rounded-full mr-4 shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+                <AnimatePresence>
+                  {openId === service.id && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+                    >
+                      <div className="pb-12">
+                        <p className="text-[18px] md:text-[20px] text-gray-600 mb-8 leading-relaxed max-w-[90%]">
+                          {service.description}
+                        </p>
+                        <ul className="space-y-4">
+                          {service.features.map((feature, index) => (
+                            <li
+                              key={index}
+                              className="flex items-center text-[16px] md:text-[18px] text-gray-600"
+                            >
+                              <span className="w-1.5 h-1.5 bg-gray-300 rounded-full mr-4 shrink-0" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        {/* --- Bento Grid Updated Section --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10  md:px-6 lg:auto-rows-[400px]">
-          {servicesDataForCard.map((service) => (
-            <div
+        {/* Bento Grid Section */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 md:px-6 lg:auto-rows-[400px]">
+          {servicesDataForCard.map((service, i) => (
+            <motion.div
               key={service.id}
-              className={`${service.gridClass} group relative overflow-hidden md:rounded-3xl bg-zinc-100 border border-black/[0.05] transition-all duration-700 min-h-[600px] lg:min-h-0`}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: false, amount: 0.1 }}
+              transition={{
+                duration: 0.8,
+                delay: i * 0.05,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className={`${service.gridClass} group relative overflow-hidden md:rounded-3xl bg-zinc-100 border border-black/[0.05] min-h-[600px] lg:min-h-0`}
             >
-              {/* Background Image - Full Clear */}
               <div className="absolute inset-0 z-0">
                 <img
                   src={service.image}
@@ -243,9 +280,7 @@ const Services: React.FC = () => {
                 />
               </div>
 
-              {/* Content Container - Dark Text & Items at the Top */}
-              <div className="relative z-10 h-full py-8 px-4 sm:px-6 lg:px-8  flex flex-col justify-start">
-                {/* TOP SECTION: Title and Icon */}
+              <div className="relative z-10 h-full py-8 px-4 sm:px-6 lg:px-8 flex flex-col justify-start">
                 <div className="flex justify-between items-start gap-4">
                   <div className="space-y-2">
                     <h3 className="text-2xl md:text-3xl font-bold tracking-tighter capitalize text-[#111111]">
@@ -253,13 +288,12 @@ const Services: React.FC = () => {
                     </h3>
                   </div>
 
-                  {/* Dark Water Effect Icon Background */}
                   <div className="w-12 h-12 rounded-full bg-black/10 backdrop-blur-xl border border-black/10 flex items-center justify-center text-[#111111] transition-all duration-500 group-hover:bg-black group-hover:text-white shrink-0">
                     <ArrowUpRight size={24} />
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
