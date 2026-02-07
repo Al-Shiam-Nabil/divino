@@ -1,3 +1,6 @@
+import { motion } from "framer-motion";
+
+import type { Transition } from "framer-motion";
 import { ArrowRight, CheckCircle2, Mail } from "lucide-react";
 import React, { useState } from "react";
 import Container from "../UI/Container";
@@ -5,18 +8,30 @@ import Container from "../UI/Container";
 const FinalHandshake: React.FC = () => {
   const [selectedService, setSelectedService] = useState("UI/UX Design");
 
+  // প্রিমিয়াম এক্সপোনেনশিয়াল ইজিং (Luxury Feel)
+  const smoothTransition: Transition = {
+    duration: 1.2,
+    ease: [0.16, 1, 0.3, 1], // Custom Cubic Bezier
+  };
+
   return (
     <section className="py-24 lg:py-40 bg-[#F8F9FA] overflow-hidden">
       <Container>
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-start">
-          {/* Left Side: Partner Message & Trust (Wavespace Inspired) */}
-          <div className="w-full lg:w-[42%] lg:sticky lg:top-32">
+          {/* Left Side: Message & Trust */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={smoothTransition}
+            className="w-full lg:w-[42%] lg:sticky lg:top-32"
+          >
             <h2 className="text-[44px] md:text-[68px] font-bold text-zinc-900 leading-[1.05] tracking-tighter mb-8">
               When you grow, <br />
               <span className="text-zinc-400 font-medium">we grow.</span>
             </h2>
 
-            <p className="text-zinc-500 text-lg md:text-xl leading-relaxed  mb-12 font-medium">
+            <p className="text-zinc-500 text-lg md:text-xl leading-relaxed mb-12 font-medium">
               Great things are never built alone. Let's have a friendly chat to
               see if we can bring your vision to life.
             </p>
@@ -39,8 +54,8 @@ const FinalHandshake: React.FC = () => {
               ))}
             </div>
 
-            <div className="group relative flex items-center gap-6 p-5 rounded-xl bg-white border border-zinc-100  transition-all duration-500 ease-in-out">
-              {/* ইমেজ কন্টেইনার - মডার্ন স্কুইরকল শেপ */}
+            {/* Founder Card - এখন এটি মূল বাম পাশের অংশের সাথে স্মুথলি লোড হবে */}
+            <div className="group relative flex items-center gap-6 p-5 rounded-xl bg-white border border-zinc-100 transition-all duration-500 ease-in-out ">
               <div className="relative shrink-0">
                 <div className="w-20 h-20 rounded-lg overflow-hidden bg-zinc-50 border border-zinc-100 group-hover:border-zinc-200 transition-all duration-500">
                   <img
@@ -49,14 +64,12 @@ const FinalHandshake: React.FC = () => {
                     className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 group-hover:scale-110"
                   />
                 </div>
-                {/* একটি সলিড অনলাইন ইন্ডিকেটর */}
                 <span className="absolute -top-1 -right-1 flex h-4 w-4">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-200 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-4 w-4 bg-green-500 border-2 border-white"></span>
                 </span>
               </div>
 
-              {/* টেক্সট এবং কল-টু-অ্যাকশন */}
               <div className="flex flex-col gap-1.5">
                 <div>
                   <h4 className="text-[20px] font-bold text-zinc-800 leading-tight tracking-tight">
@@ -67,7 +80,6 @@ const FinalHandshake: React.FC = () => {
                   </p>
                 </div>
 
-                {/* রিফাইনড বাটন - কোনো বর্ডার নেই, শুধু একটি স্লিক আন্ডারলাইন */}
                 <button className="flex items-center gap-2 mt-1 group/btn cursor-pointer">
                   <div className="w-7 h-7 rounded-full bg-[#1C3883] flex items-center justify-center transition-transform duration-300 group-hover/btn:-rotate-45">
                     <ArrowRight size={15} className="text-white" />
@@ -79,13 +91,18 @@ const FinalHandshake: React.FC = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* --- Right Side: Form (Small Device এ Full Width, কোনো প্যাডিং নেই) --- */}
-          <div className="w-screen md:w-full lg:w-[58%] -mx-4 md:mx-0">
+          {/* Right Side: Form - Ultra Smooth Slide In */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={smoothTransition}
+            className="w-screen md:w-full lg:w-[58%] -mx-4 md:mx-0"
+          >
             <div className="bg-white p-8 md:p-16 rounded-none md:rounded-2xl border-y md:border border-zinc-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.03)]">
               <form className="space-y-10" onSubmit={(e) => e.preventDefault()}>
-                {/* Inputs Group: Name & Email */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="relative group">
                     <input
@@ -111,9 +128,8 @@ const FinalHandshake: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Modern Service Chips */}
                 <div className="space-y-6">
-                  <span className="text-sm font-semibold capitalize  text-zinc-500 block ml-1">
+                  <span className="text-sm font-semibold capitalize text-zinc-500 block ml-1">
                     What do you need help with?
                   </span>
                   <div className="flex flex-wrap gap-3">
@@ -124,23 +140,23 @@ const FinalHandshake: React.FC = () => {
                       "Web Design",
                       "Mobile App",
                     ].map((service) => (
-                      <button
+                      <motion.button
                         key={service}
+                        whileTap={{ scale: 0.97 }}
                         type="button"
                         onClick={() => setSelectedService(service)}
                         className={`px-6 py-3 rounded-full text-sm font-bold transition-all duration-300 border ${
                           selectedService === service
-                            ? "bg-[#1C3883] text-white border-[#1C3883] shadow-xl shadow-zinc-200"
+                            ? "bg-[#1C3883] text-white border-[#1C3883] shadow-lg"
                             : "bg-white text-zinc-500 border-zinc-100 hover:border-zinc-900 hover:text-zinc-900"
                         }`}
                       >
                         {service}
-                      </button>
+                      </motion.button>
                     ))}
                   </div>
                 </div>
 
-                {/* Project Details Textarea */}
                 <div className="relative group">
                   <textarea
                     required
@@ -153,32 +169,37 @@ const FinalHandshake: React.FC = () => {
                   </label>
                 </div>
 
-                {/* Action Buttons Section */}
                 <div className="flex flex-col sm:flex-row items-center gap-8 pt-4">
-                  {/* Your Custom Primary Button */}
-                  <div className="w-full sm:w-[260px]">
-                    <button className="group cursor-pointer relative w-full h-[64px] flex items-center justify-center gap-2 overflow-hidden text-white rounded-full font-bold text-[18px] transition-all active:scale-[0.98] shadow-xl">
+                  <motion.div
+                    whileHover={{ scale: 1.015 }}
+                    whileTap={{ scale: 0.985 }}
+                    className="w-full sm:w-[260px]"
+                  >
+                    <button className="group cursor-pointer relative w-full h-[64px] flex items-center justify-center gap-2 overflow-hidden text-white rounded-full font-bold text-[18px] shadow-xl transition-all">
                       <div className="absolute inset-0 bg-[linear-gradient(45deg,#0A111B,#0B2B4C,#1E3A8A,#0A111B)] bg-[length:300%_300%] animate-gradient-move"></div>
                       <span className="relative z-10">Start Conversation</span>
-                      <ArrowRight size={22} className="relative z-10" />
+                      <ArrowRight
+                        size={22}
+                        className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+                      />
                     </button>
-                  </div>
-
+                  </motion.div>
                   <span className="text-zinc-300 font-medium italic hidden sm:block tracking-tighter">
                     or
                   </span>
-
-                  {/* Minimalist Secondary Button */}
-                  <button className="flex items-center gap-3 text-zinc-500 font-bold hover:text-zinc-900 transition-all group cursor-pointer">
+                  <motion.button
+                    whileHover={{ x: 5 }}
+                    className="flex items-center gap-3 text-zinc-500 font-bold hover:text-zinc-900 transition-all group cursor-pointer"
+                  >
                     <div className="w-12 h-12 rounded-full bg-zinc-50 border border-zinc-100 flex items-center justify-center group-hover:bg-[#1C3883] group-hover:text-white transition-all duration-300">
                       <Mail size={18} />
                     </div>
-                    <span className="">Email Us</span>
-                  </button>
+                    <span>Email Us</span>
+                  </motion.button>
                 </div>
               </form>
             </div>
-          </div>
+          </motion.div>
         </div>
       </Container>
 
@@ -190,9 +211,7 @@ const FinalHandshake: React.FC = () => {
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
           }
-          .animate-gradient-move {
-            animation: gradient-move 6s ease infinite;
-          }
+          .animate-gradient-move { animation: gradient-move 6s ease infinite; }
         `,
         }}
       />
