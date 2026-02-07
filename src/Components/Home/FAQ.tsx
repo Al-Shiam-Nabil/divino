@@ -50,60 +50,59 @@ const FAQ: React.FC = () => {
         </div>
       </Container>
 
-      <div className="flex flex-col lg:flex-row gap-16 items-start justify-between">
+      <div className="flex flex-col lg:flex-row gap-16 items-start justify-between max-w-7xl mx-auto  lg:px-8 xl:px-0">
         {/* Left Side: Accordion List */}
-        <Container>
-          <div className="w-full lg:flex-[0_0_60%] border-t border-zinc-100 ">
-            {faqData.map((item, index) => (
-              <div key={index} className="border-b border-zinc-100">
-                <button
-                  onClick={() => toggleAccordion(index)}
-                  className="w-full py-7 flex items-center justify-between text-left group transition-all"
-                >
-                  <span
-                    className={`text-lg md:text-xl font-semibold tracking-tight transition-colors duration-500 ${
-                      openIndex === index
-                        ? "text-zinc-900"
-                        : "text-zinc-500 group-hover:text-zinc-800"
-                    }`}
-                  >
-                    {item.question}
-                  </span>
-                  <div
-                    className={`shrink-0 ml-4 p-1 rounded-full transition-all duration-500 ${
-                      openIndex === index
-                        ? "rotate-180 bg-zinc-900 text-white"
-                        : "text-zinc-400 group-hover:text-zinc-900"
-                    }`}
-                  >
-                    {openIndex === index ? (
-                      <Minus size={20} />
-                    ) : (
-                      <Plus size={20} />
-                    )}
-                  </div>
-                </button>
 
-                <div
-                  className={`grid transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        <div className="w-full px-4 sm:px-6 lg:px-0  lg:flex-[0_0_60%] border-t border-zinc-100 ">
+          {faqData.map((item, index) => (
+            <div key={index} className="border-b border-zinc-100">
+              <button
+                onClick={() => toggleAccordion(index)}
+                className="w-full py-7 flex items-center justify-between text-left group transition-all"
+              >
+                <span
+                  className={`text-lg md:text-xl font-semibold tracking-tight transition-colors duration-500 ${
                     openIndex === index
-                      ? "grid-rows-[1fr] opacity-100 pb-8"
-                      : "grid-rows-[0fr] opacity-0"
+                      ? "text-zinc-900"
+                      : "text-zinc-500 group-hover:text-zinc-800"
                   }`}
                 >
-                  <div className="overflow-hidden">
-                    <p className="text-zinc-500 text-lg leading-relaxed max-w-[95%]">
-                      {item.answer}
-                    </p>
-                  </div>
+                  {item.question}
+                </span>
+                <div
+                  className={`shrink-0 ml-4 p-1 rounded-full transition-all duration-500 ${
+                    openIndex === index
+                      ? "rotate-180 bg-zinc-900 text-white"
+                      : "text-zinc-400 group-hover:text-zinc-900"
+                  }`}
+                >
+                  {openIndex === index ? (
+                    <Minus size={20} />
+                  ) : (
+                    <Plus size={20} />
+                  )}
+                </div>
+              </button>
+
+              <div
+                className={`grid transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                  openIndex === index
+                    ? "grid-rows-[1fr] opacity-100 pb-8"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <p className="text-zinc-500 text-lg leading-relaxed max-w-[95%]">
+                    {item.answer}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
-        </Container>
+            </div>
+          ))}
+        </div>
 
         {/* Right Side: Floating Card - Full width on Mobile */}
-        <div className="w-screen lg:w-auto lg:mr-8 xl:mr-0  lg:flex-[0_0_35%] lg:sticky lg:top-32 transition-none">
+        <div className="w-full  lg:w-auto lg:flex-[0_0_35%] lg:sticky lg:top-32 transition-none">
           <div className="relative px-4 py-8 md:p-12  rounded-none lg:rounded-[40px] overflow-hidden text-white shadow-2xl isolate min-h-[400px] flex flex-col justify-center">
             <div className="absolute inset-0 bg-[#060B12] -z-20" />
             <div className="absolute inset-0 -z-10 opacity-60">
