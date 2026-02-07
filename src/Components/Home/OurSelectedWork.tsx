@@ -1,8 +1,7 @@
+import { motion } from "framer-motion"; // Motion import
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import React, { useRef, useState } from "react";
 
-// Video Import
-// import Vedio1 from "../../assets/brandIntro.mp4";
 const Vedio1 =
   "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4";
 
@@ -66,8 +65,21 @@ const ProductCard = ({ product }: { product: Product }) => {
   };
 
   return (
-    <div className="group relative w-full flex flex-col">
-      {/* Media Layer: Full Width on Mobile, Minimalist Radius on MD */}
+    <motion.div
+      // --- SMOOTH SCROLL REVEAL ---
+      initial={{ opacity: 0, y: 60 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{
+        once: false, // Protibar scroll-e animated hobe
+        amount: 0.15, // 15% dekha gele animation shuru hobe
+        margin: "0px 0px -10% 0px", // "Kapakapi" thamanor jonno bottom buffer
+      }}
+      transition={{
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1], // Ultra-smooth Agency Style Easing
+      }}
+      className="group relative w-full flex flex-col"
+    >
       <div
         className="relative aspect-[4/5] w-full overflow-hidden bg-[#f9f9f9] transition-all duration-700 md:rounded-[2.5rem] cursor-none shadow-sm"
         onMouseMove={handleMouseMove}
@@ -125,16 +137,11 @@ const ProductCard = ({ product }: { product: Product }) => {
       {/* Content Area */}
       <div className="mt-8 px-6 md:px-2 flex flex-col items-start gap-4">
         <div className="space-y-1.5">
-          {/* Refined Title Size */}
           <h3 className="text-2xl md:text-[2rem] font-bold tracking-tight text-zinc-900 leading-tight">
             {product.title}
           </h3>
-          {/* <p className="text-lg md:text-[1.15rem] text-zinc-500 font-medium leading-relaxed max-w-[92%]">
-            {product.description}
-          </p> */}
         </div>
 
-        {/* Modern Twist Tags: Modern Teal-Slate Color & Capitalize */}
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-1">
           {product.tags.map((tag, index) => (
             <div key={index} className="flex items-center gap-2">
@@ -152,7 +159,6 @@ const ProductCard = ({ product }: { product: Product }) => {
           {product.description}
         </p>
 
-        {/* Premium Button: Static Icon with Solid Background Fill */}
         <button className=" lg:hidden mt-3 flex items-center gap-3 group/link">
           <span className="text-[16px] md:text-[17px] font-semibold text-zinc-900 relative">
             Explore Now
@@ -163,14 +169,13 @@ const ProductCard = ({ product }: { product: Product }) => {
           </div>
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 const OurSelectedWork = () => {
   return (
-    <section className="bg-white py-12 md:py-24">
-      {/* Container ensures full-width images on mobile */}
+    <section className="bg-white py-12 md:py-24 overflow-hidden">
       <div className="w-full max-w-7xl mx-auto md:px-6 lg:px-8 xl:px-0">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20 md:gap-x-16 md:gap-y-32">
           {products.map((product, index) => (
