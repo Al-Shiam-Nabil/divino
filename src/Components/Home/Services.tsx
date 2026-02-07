@@ -1,4 +1,3 @@
-import type { Variants } from "framer-motion";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowUpRight,
@@ -152,14 +151,6 @@ const Services: React.FC = () => {
   };
 
   // Modern Fade Reveal Settings
-  const fadeUpVariant: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-    },
-  };
 
   return (
     <section
@@ -169,11 +160,65 @@ const Services: React.FC = () => {
       <div className="max-w-7xl mx-auto ">
         <div className="w-full mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-12 lg:gap-24 items-start mb-25">
           {/* Left Content Side */}
-          <motion.div
+          {/* <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.3 }}
             variants={fadeUpVariant}
+            className="lg:w-1/2 space-y-10"
+          >
+            <div>
+              <div className="flex items-center gap-2 mb-6">
+                <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+                <span className="text-[14px] font-bold uppercase tracking-widest text-[#5e7ea7]">
+                  Services
+                </span>
+              </div>
+              <p className="text-[26px] md:text-[38px] font-medium leading-[1.2] text-[#111111] tracking-tight">
+                We build transformative digital experiences for the world's
+                leading brands by blending design, content, and technology.
+              </p>
+            </div>
+
+            <button className="group relative overflow-hidden px-10 py-4 bg-black text-white rounded-full transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/30 active:scale-95 cursor-pointer isolate">
+              <div className="absolute inset-0 z-0 bg-[length:300%_300%] animate-[liquid-flow_6s_ease-in-out_infinite] bg-gradient-to-br from-[#050a14] via-[#0B2B4C] via-[#1e3a8a] to-[#050a14]"></div>
+              <div className="absolute inset-0 z-10 bg-indigo-600 translate-y-full group-hover:translate-y-0 transition-transform duration-700 cubic-bezier(0.16, 1, 0.3, 1)"></div>
+              <div className="relative z-20 flex items-center gap-1">
+                <span className="text-base font-semibold">Work with Us</span>
+                <div className="relative w-5 h-5 overflow-hidden">
+                  <div className="relative w-full h-full flex flex-col transition-all group-hover:[animation:icon-loop_0.5s_linear_infinite]">
+                    <div className="absolute inset-0 flex items-center justify-center shrink-0">
+                      <ArrowUpRight size={20} strokeWidth={2.5} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </motion.div> */}
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            // once: false রাখা হয়েছে আপনার চাহিদা মতো
+            // amount: 0.1 দেওয়া হয়েছে যাতে এলিমেন্ট ভিউপোর্টে সামান্য ঢুকলেই এনিমেশন শুরু হয়
+            // margin: "-100px 0px" নিচ থেকে উপরে স্ক্রল করার সময় হঠাত লাফানো (jitter) বন্ধ করবে
+            viewport={{ once: false, amount: 0.1, margin: "-100px 0px" }}
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 30, // y ভ্যালু ৩০-৪০ থেকে কমিয়ে ২০ করা হয়েছে যাতে 'jump' টা চোখে না লাগে
+              },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 1.2, // প্রিমিয়াম ফিল দেওয়ার জন্য ১.২ সেকেন্ড
+                  ease: [0.16, 1, 0.3, 1], // হাই-এন্ড এজেন্সি স্টাইল স্মুথ কার্ভ
+                },
+              },
+            }}
+            // will-change ব্যবহার করলে ব্রাউজার স্ক্রলিংয়ের সময় লেআউট ক্যালকুলেশন নিয়ে ঝামেলা করে না
+            style={{ willChange: "transform, opacity" }}
             className="lg:w-1/2 space-y-10"
           >
             <div>
@@ -315,10 +360,10 @@ const Services: React.FC = () => {
                 delay: i * 0.05,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className={`${service.gridClass} group relative flex flex-col lg:block overflow-hidden md:rounded-3xl bg-white lg:bg-zinc-100  min-h-[500px] lg:min-h-0`}
+              className={`${service.gridClass} group relative flex flex-col lg:block overflow-hidden rounded-none md:rounded-3xl bg-white lg:bg-zinc-100  min-h-[500px] lg:min-h-0`}
             >
               {/* Image Container - মোবাইলে flex-grow করবে, লার্জে absolute থাকবে */}
-              <div className="relative flex-grow lg:absolute lg:inset-0 lg:z-0 overflow-hidden md:rounded-3xl ">
+              <div className="relative flex-grow lg:absolute lg:inset-0 lg:z-0 overflow-hidden rounded-none md:rounded-3xl ">
                 <img
                   src={service.image}
                   alt={service.title}

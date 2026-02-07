@@ -66,18 +66,18 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <motion.div
-      // --- SMOOTH SCROLL REVEAL ---
-      initial={{ opacity: 0, y: 60 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{
-        once: false, // Protibar scroll-e animated hobe
-        amount: 0.15, // 15% dekha gele animation shuru hobe
-        margin: "0px 0px -10% 0px", // "Kapakapi" thamanor jonno bottom buffer
+        once: false,
+        amount: 0.1,
+        margin: "0px 0px -50px 0px", // নেগেটিভ মার্জিন কাপাকাপি কমায়
       }}
       transition={{
-        duration: 1.2,
-        ease: [0.16, 1, 0.3, 1], // Ultra-smooth Agency Style Easing
+        duration: 0.8,
+        ease: "easeOut", // সিম্পল ইজিং অনেক সময় বেশি স্টেবল হয়
       }}
+      style={{ willChange: "transform, opacity" }} // ব্রাউজার অপ্টিমাইজেশন
       className="group relative w-full flex flex-col"
     >
       <div
