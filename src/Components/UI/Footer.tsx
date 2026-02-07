@@ -192,12 +192,12 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between lg:items-center gap-8">
           <p className="text-zinc-300 text-sm font-bold tracking-tight">
             © 2026 Divino Marketing Agency. All Rights Reserved.
           </p>
 
-          <div className="flex gap-10 text-sm font-semibold capitalize text-zinc-300">
+          <div className="flex gap-5 sm:gap-10 text-sm font-semibold capitalize text-zinc-300 flex-wrap">
             <a href="#" className="hover:text-white transition-colors">
               Privacy Policy
             </a>

@@ -171,7 +171,7 @@ const OurSelectedWork = () => {
   return (
     <section className="bg-white py-12 md:py-24">
       {/* Container ensures full-width images on mobile */}
-      <div className="w-full max-w-[1380px] mx-auto px-0 md:px-12">
+      <div className="w-full max-w-7xl mx-auto md:px-6 lg:px-8 xl:px-0">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20 md:gap-x-16 md:gap-y-32">
           {products.map((product, index) => (
             <div key={product.id} className={index % 2 !== 0 ? "md:mt-24" : ""}>

@@ -16,7 +16,7 @@ const FinalHandshake: React.FC = () => {
               <span className="text-zinc-400 font-medium">we grow.</span>
             </h2>
 
-            <p className="text-zinc-500 text-lg md:text-xl leading-relaxed max-w-md mb-12 font-medium">
+            <p className="text-zinc-500 text-lg md:text-xl leading-relaxed  mb-12 font-medium">
               Great things are never built alone. Let's have a friendly chat to
               see if we can bring your vision to life.
             </p>

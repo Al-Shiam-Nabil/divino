@@ -48,9 +48,11 @@ const FAQ: React.FC = () => {
             <span className="text-zinc-400 font-medium">to Know.</span>
           </h2>
         </div>
+      </Container>
 
-        <div className="flex flex-col lg:flex-row gap-16 items-start justify-between">
-          {/* Left Side: Accordion List */}
+      <div className="flex flex-col lg:flex-row gap-16 items-start justify-between">
+        {/* Left Side: Accordion List */}
+        <Container>
           <div className="w-full lg:flex-[0_0_60%] border-t border-zinc-100 ">
             {faqData.map((item, index) => (
               <div key={index} className="border-b border-zinc-100">
@@ -98,46 +100,44 @@ const FAQ: React.FC = () => {
               </div>
             ))}
           </div>
+        </Container>
 
-          {/* Right Side: Floating Card - Full width on Mobile */}
-          <div className="w-screen lg:w-auto -mx-6 md:mx-0 lg:flex-[0_0_35%] lg:sticky lg:top-32 transition-none">
-            <div className="relative px-4 py-8 md:p-12 rounded-none md:rounded-[40px] overflow-hidden text-white shadow-2xl isolate min-h-[400px] flex flex-col justify-center">
-              {/* --- Infinity Animated Background --- */}
-              <div className="absolute inset-0 bg-[#060B12] -z-20" />
-              <div className="absolute inset-0 -z-10 opacity-60">
-                <div className="absolute top-[-20%] right-[-20%] w-[80%] h-[80%] bg-[#1E3A8A] blur-[100px] rounded-full animate-blob-slow" />
-                <div className="absolute bottom-[-10%] left-[-10%] w-[70%] h-[70%] bg-[#0B2B4C] blur-[80px] rounded-full animate-blob-slow reverse" />
+        {/* Right Side: Floating Card - Full width on Mobile */}
+        <div className="w-screen lg:w-auto lg:mr-8 xl:mr-0  lg:flex-[0_0_35%] lg:sticky lg:top-32 transition-none">
+          <div className="relative px-4 py-8 md:p-12  rounded-none lg:rounded-[40px] overflow-hidden text-white shadow-2xl isolate min-h-[400px] flex flex-col justify-center">
+            <div className="absolute inset-0 bg-[#060B12] -z-20" />
+            <div className="absolute inset-0 -z-10 opacity-60">
+              <div className="absolute top-[-20%] right-[-20%] w-[80%] h-[80%] bg-[#1E3A8A] blur-[100px] rounded-full animate-blob-slow" />
+              <div className="absolute bottom-[-10%] left-[-10%] w-[70%] h-[70%] bg-[#0B2B4C] blur-[80px] rounded-full animate-blob-slow reverse" />
+            </div>
+
+            <div className="relative z-10 max-w-[90%] mx-auto md:max-w-none">
+              <div className="w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-8 shadow-inner">
+                <MessageCircle className="text-[#D9FF50]" size={32} />
               </div>
 
-              <div className="relative z-10 max-w-[90%] mx-auto md:max-w-none">
-                <div className="w-16 h-16 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center mb-8 shadow-inner">
-                  <MessageCircle className="text-[#D9FF50]" size={32} />
-                </div>
+              <h3 className="text-3xl font-bold mb-5 leading-[1.2]">
+                Still have a <br /> specific question?
+              </h3>
+              <p className="text-zinc-400 text-lg mb-10 leading-relaxed font-medium">
+                Explain it to us like a friend over coffee. We're ready to clear
+                any doubts.
+              </p>
 
-                <h3 className="text-3xl font-bold mb-5 leading-[1.2]">
-                  Still have a <br /> specific question?
-                </h3>
-                <p className="text-zinc-400 text-lg mb-10 leading-relaxed font-medium">
-                  Explain it to us like a friend over coffee. We're ready to
-                  clear any doubts.
-                </p>
-
-                {/* --- Animated Button --- */}
-                <div className="w-full">
-                  <button className="group cursor-pointer relative w-full h-[52px] md:h-[64px] flex items-center justify-center gap-2 overflow-hidden text-white rounded-full font-bold text-[16px] md:text-[18px] transition-all active:scale-[0.95] shadow-xl">
-                    <div className="absolute inset-0 bg-[linear-gradient(45deg,#0A111B,#0B2B4C,#1E3A8A,#0A111B)] bg-[length:300%_300%] animate-gradient-move"></div>
-                    <span className="relative z-10">Chat with a Human</span>
-                    <ArrowRight
-                      size={22}
-                      className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
-                    />
-                  </button>
-                </div>
+              <div className="w-full">
+                <button className="group cursor-pointer relative w-full h-[52px] md:h-[64px] flex items-center justify-center gap-2 overflow-hidden text-white rounded-full font-bold text-[16px] md:text-[18px] transition-all active:scale-[0.95] shadow-xl">
+                  <div className="absolute inset-0 bg-[linear-gradient(45deg,#0A111B,#0B2B4C,#1E3A8A,#0A111B)] bg-[length:300%_300%] animate-gradient-move"></div>
+                  <span className="relative z-10">Chat with a Human</span>
+                  <ArrowRight
+                    size={22}
+                    className="relative z-10 transition-transform duration-300 group-hover:translate-x-1"
+                  />
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </Container>
+      </div>
 
       <style
         dangerouslySetInnerHTML={{

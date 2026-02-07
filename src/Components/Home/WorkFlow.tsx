@@ -72,7 +72,7 @@ const WorkFlow = () => {
                   } items-stretch lg:items-center justify-between`}
                 >
                   {/* Text Section */}
-                  <div className="w-full lg:w-[45%] flex flex-col justify-center px-6 md:px-12 lg:px-0 pt-16 md:pt-24 lg:pt-0">
+                  <div className="w-full lg:w-[45%] flex flex-col justify-center px-4 sm:px-6 lg:px-8 xl:px-0 pt-16 md:pt-24 lg:pt-0">
                     <div className="space-y-4 md:space-y-6">
                       <h3
                         className={`text-3xl md:text-5xl font-black tracking-tighter ${step.textColor} leading-tight`}
@@ -109,7 +109,7 @@ const WorkFlow = () => {
 
                   {/* Image Section - Increased height for mobile and added gap */}
                   <div
-                    className={`w-full lg:w-[48%] h-full relative flex items-end lg:items-center ${
+                    className={`w-full lg:w-[48%] h-full relative flex items-end lg:items-center lg:mx-8 xl:mx-0 ${
                       isImageLeft ? "lg:justify-start" : "lg:justify-end"
                     } mt-16 md:mt-24 lg:mt-0`}
                   >
